@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/20 20:18:04 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/20 21:31:13 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,37 @@
 class PhoneBook
 {
 private:
-	Contact contacts[MAX_CONTACTS];
-	int		len;
+	Contact Contacts[MAX_CONTACTS];
+	int		LastAdded;
 public:
 	PhoneBook();
-	~PhoneBook();
-	int AddContact(std::string name);
+	int AddContact(Contact NewContact);
+	void Add();
+	void Search();
 };
 
 PhoneBook::PhoneBook()
 {
+	LastAdded = 0;
 }
 
-PhoneBook::~PhoneBook()
+int PhoneBook::AddContact(Contact NewContact)
 {
+	if (this->LastAdded == MAX_CONTACTS)
+		this->LastAdded = 0;
+	this->Contacts[this->LastAdded] = NewContact;
+	return (1);
 }
 
-int PhoneBook::AddContact(std::string name)
+void PhoneBook::Add()
+{
+	Contact NewContact;
+
+	NewContact.InitContact();
+	this->AddContact(NewContact);
+}
+
+void PhoneBook::Search()
 {
 }
 
