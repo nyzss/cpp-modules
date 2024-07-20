@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/20 21:31:13 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/20 22:05:03 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int PhoneBook::AddContact(Contact NewContact)
 	if (this->LastAdded == MAX_CONTACTS)
 		this->LastAdded = 0;
 	this->Contacts[this->LastAdded] = NewContact;
+	this->LastAdded++;
 	return (1);
 }
 
