@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 18:53:00 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/20 20:11:46 by okoca            ###   ########.fr       */
+/*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
+/*   Updated: 2024/07/20 20:18:37 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include "PhoneBook.hpp"
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
-int main()
+# include <iostream>
+# include <string>
+# include <iomanip>
+
+class Contact
 {
-	std::string	input;
-	while (1)
-	{
-		std::cin >> input;
-		if (input.compare("exit") == 0)
-			break ;
-	}
-	std::cout << "exit..." << std::endl;
-	return (0);
+private:
+	std::string FirstName;
+public:
+	Contact();
+	~Contact();
+};
+
+Contact::Contact()
+{
 }
+
+Contact::~Contact()
+{
+}
+
+#endif
