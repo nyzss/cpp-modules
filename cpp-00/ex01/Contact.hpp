@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 16:52:41 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 21:28:59 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,20 @@ void	Contact::InitContact()
 	std::cout << "Enter a nickname:" << std::endl;
 	std::cout << "> ";
 	std::getline(std::cin, Nickname);
+	std::cout << "Enter a phone number: " << std::endl;
 	while (1)
 	{
-		std::cout << "Enter a phone number: " << std::endl;
 		try
 		{
 			std::cout << "> ";
 			std::getline(std::cin, TmpNumber);
+			if (std::cin.eof())
+			{
+				std::cin.clear();
+				TmpNumber.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				return ;
+			}
 			PhoneNumber = std::stoll(TmpNumber);
 			break ;
 		}
