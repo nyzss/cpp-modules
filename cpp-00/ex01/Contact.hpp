@@ -6,11 +6,13 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 21:38:48 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 21:40:33 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 # include <iostream>
 # include <string>
@@ -132,3 +134,5 @@ void	Contact::InitContact()
 	this->DarkestSecret = DarkestSecret;
 	this->PhoneNumber = PhoneNumber;
 }
+
+#endif

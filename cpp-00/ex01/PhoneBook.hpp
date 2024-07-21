@@ -6,11 +6,13 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 21:38:46 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 21:40:51 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 # include <iostream>
 # include <string>
@@ -112,3 +114,5 @@ void PhoneBook::Search()
 		std::cout << "Invalid input!" << std::endl;
 	}
 }
+
+#endif
