@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 18:53:00 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 10:31:14 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 11:19:54 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ int main()
 	while (1)
 	{
 		std::cout << "PhoneBook3000> " << std::flush;
-		std::cin >> input;
+		std::getline(std::cin, input);
 		for (int i = 0; i < input.length(); i++)
 			input[i] = ::toupper(input[i]);
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (input.compare("EXIT") == 0)
 			break ;
 		else if (input.compare("ADD") == 0)

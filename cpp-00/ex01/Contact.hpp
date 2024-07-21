@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 10:35:06 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 11:46:34 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,11 @@ void	Contact::InitContact()
 	long long PhoneNumber;
 
 	std::cout << "Enter a first name:" << std::endl;
-	std::cin >> Firstname;
+	std::getline(std::cin, Firstname);
 	std::cout << "Enter a last name:" << std::endl;
-	std::cin >> Lastname;
+	std::getline(std::cin, Lastname);
 	std::cout << "Enter a nickname:" << std::endl;
-	std::cin >> Nickname;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::getline(std::cin, Nickname);
 	while (1)
 	{
 		std::cout << "Enter a phone number: " << std::endl;
@@ -102,7 +101,7 @@ void	Contact::InitContact()
 		}
 	}
 	std::cout << "Enter your darkest secret: " << std::endl;
-	std::cin >> DarkestSecret;
+	std::getline(std::cin, DarkestSecret);
 
 	this->Firstname = Firstname;
 	this->Lastname = Lastname;
