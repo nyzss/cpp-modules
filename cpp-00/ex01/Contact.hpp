@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/20 22:03:06 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 09:43:43 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,40 @@ private:
 public:
 	Contact();
 	void	InitContact();
+	std::string	GetFirstName();
+	std::string	GetLastName();
+	std::string	GetNickname();
+	int			GetPhone();
+	std::string	GetDarkest();
 };
 
 Contact::Contact()
 {
+}
+
+std::string	Contact::GetFirstName()
+{
+	return (this->Firstname);
+}
+
+std::string	Contact::GetLastName()
+{
+	return (this->Lastname);
+}
+
+std::string	Contact::GetNickname()
+{
+	return (this->Nickname);
+}
+
+int	Contact::GetPhone()
+{
+	return (this->PhoneNumber);
+}
+
+std::string	Contact::GetDarkest()
+{
+	return (this->DarkestSecret);
 }
 
 void	Contact::InitContact()
@@ -61,10 +91,12 @@ void	Contact::InitContact()
 		catch(const std::invalid_argument & e)
 		{
 			std::cout << "PhoneNumber: Please pass in a valid phone number! (Only digits)" << std::endl;
+			std:: cout << "Try again: ";
 		}
 		catch(const std::out_of_range & e)
 		{
 			std::cout << "PhoneNumber: The phone number you passed is too big!" << std::endl;
+			std:: cout << "Try again: ";
 		}
 	}
 	std::cout << "Enter your darkest secret: " << std::endl;
