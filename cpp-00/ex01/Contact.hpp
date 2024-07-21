@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 11:46:34 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 15:56:32 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ public:
 	std::string	GetNickname();
 	int			GetPhone();
 	std::string	GetDarkest();
+	void		Display();
 };
 
 Contact::Contact()
@@ -63,6 +64,17 @@ int	Contact::GetPhone()
 std::string	Contact::GetDarkest()
 {
 	return (this->DarkestSecret);
+}
+
+void		Contact::Display()
+{
+	std::cout << "---------------------------" << std::endl;
+	std::cout << std::left << "First Name: " << this->Firstname << std::endl;
+	std::cout << std::left << "Last Name: " << this->Lastname << std::endl;
+	std::cout << std::left << "Nickname: " << this->Nickname << std::endl;
+	std::cout << std::left << "Phone Number: " << this->PhoneNumber << std::endl;
+	std::cout << std::left << "Darkest Secret: " << this->DarkestSecret << std::endl;
+	std::cout << "---------------------------" << std::endl;
 }
 
 void	Contact::InitContact()

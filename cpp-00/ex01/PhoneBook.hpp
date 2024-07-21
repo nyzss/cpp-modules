@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 14:25:39 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 15:54:24 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,31 @@ void PhoneBook::Search()
 		std::cout << std::right << std::setw(10) << (this->Contacts[i].GetNickname().size() > 10 ? this->Contacts[i].GetNickname().substr(0, 9).append(".") : this->Contacts[i].GetNickname())
 				<< std::setw(0) << std::setfill(' ') << " ";
 		std::cout << std::endl;
+	}
+
+	std::string new_input;
+	int	index;
+
+	std::cout << "[INDEX]> ";
+	try
+	{
+		std::getline(std::cin, new_input);
+		index = std::stoi(new_input) - 1;
+		if (index > MAX_CONTACTS)
+			throw (std::invalid_argument("Index out of bounds (outside of MAX_CONTACTS)"));
+		else if (index >= this->Total)
+			throw (std::invalid_argument("No contacts at the specified Index."));
+		else if (index < 0)
+			throw (std::invalid_argument("Indexes start by 1!"));
+		this->Contacts[index].Display();
+	}
+	catch(std::invalid_argument &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << "Invalid input!" << std::endl;
 	}
 }
 
