@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 15:56:32 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 16:52:41 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ std::string	Contact::GetDarkest()
 void		Contact::Display()
 {
 	std::cout << "---------------------------" << std::endl;
-	std::cout << std::left << "First Name: " << this->Firstname << std::endl;
-	std::cout << std::left << "Last Name: " << this->Lastname << std::endl;
-	std::cout << std::left << "Nickname: " << this->Nickname << std::endl;
-	std::cout << std::left << "Phone Number: " << this->PhoneNumber << std::endl;
-	std::cout << std::left << "Darkest Secret: " << this->DarkestSecret << std::endl;
+	std::cout << std::setw(20) << "First Name: " << std::left << std::setw(20) << this->Firstname << std::endl;
+	std::cout << std::setw(20) << "Last Name: " << std::left << std::setw(20) << this->Lastname << std::endl;
+	std::cout << std::setw(20) << "Nickname: " << std::left << std::setw(20) << this->Nickname << std::endl;
+	std::cout << std::setw(20) << "Phone Number: " << std::left << std::setw(20) <<  this->PhoneNumber << std::endl;
+	std::cout << std::setw(20) << "Darkest Secret: " << std::left << std::setw(20) <<  this->DarkestSecret << std::endl;
 	std::cout << "---------------------------" << std::endl;
 }
 
@@ -87,16 +87,20 @@ void	Contact::InitContact()
 	long long PhoneNumber;
 
 	std::cout << "Enter a first name:" << std::endl;
+	std::cout << "> ";
 	std::getline(std::cin, Firstname);
 	std::cout << "Enter a last name:" << std::endl;
+	std::cout << "> ";
 	std::getline(std::cin, Lastname);
 	std::cout << "Enter a nickname:" << std::endl;
+	std::cout << "> ";
 	std::getline(std::cin, Nickname);
 	while (1)
 	{
 		std::cout << "Enter a phone number: " << std::endl;
 		try
 		{
+			std::cout << "> ";
 			std::getline(std::cin, TmpNumber);
 			PhoneNumber = std::stoll(TmpNumber);
 			break ;
@@ -113,6 +117,7 @@ void	Contact::InitContact()
 		}
 	}
 	std::cout << "Enter your darkest secret: " << std::endl;
+	std::cout << "> ";
 	std::getline(std::cin, DarkestSecret);
 
 	this->Firstname = Firstname;
