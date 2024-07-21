@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 18:53:00 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/20 21:55:12 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 10:31:14 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,15 @@ int main()
 	{
 		std::cout << "PhoneBook3000> " << std::flush;
 		std::cin >> input;
-		if (input.compare("exit") == 0)
+		for (int i = 0; i < input.length(); i++)
+			input[i] = ::toupper(input[i]);
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (input.compare("EXIT") == 0)
 			break ;
-		else if (input.compare("add") == 0)
+		else if (input.compare("ADD") == 0)
 			Book.Add();
+		else if (input.compare("SEARCH") == 0)
+			Book.Search();
 	}
 	std::cout << "exit..." << std::endl;
 	return (0);

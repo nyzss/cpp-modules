@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 09:43:43 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 10:35:06 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	Contact::InitContact()
 	std::cin >> Firstname;
 	std::cout << "Enter a last name:" << std::endl;
 	std::cin >> Lastname;
+	std::cout << "Enter a nickname:" << std::endl;
+	std::cin >> Nickname;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	while (1)
 	{
