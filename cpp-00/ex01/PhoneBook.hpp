@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 11:55:43 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 14:25:39 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void PhoneBook::Search()
 	{
 		std::cout << std::right << std::setw(10) << i + 1
 				<< std::setw(0) << std::setfill(' ') << " ";
-		std::cout << std::right << std::setw(10) << this->Contacts[i].GetFirstName()
+		std::cout << std::right << std::setw(10) << (this->Contacts[i].GetFirstName().size() > 10 ? this->Contacts[i].GetFirstName().substr(0, 9).append(".") : this->Contacts[i].GetFirstName())
 				<< std::setw(0) << std::setfill(' ') << " ";
-		std::cout << std::right << std::setw(10) << this->Contacts[i].GetLastName()
+		std::cout << std::right << std::setw(10) << (this->Contacts[i].GetLastName().size() > 10 ? this->Contacts[i].GetLastName().substr(0, 9).append(".") : this->Contacts[i].GetLastName())
 				<< std::setw(0) << std::setfill(' ') << " ";
-		std::cout << std::right << std::setw(10) << this->Contacts[i].GetNickname()
+		std::cout << std::right << std::setw(10) << (this->Contacts[i].GetNickname().size() > 10 ? this->Contacts[i].GetNickname().substr(0, 9).append(".") : this->Contacts[i].GetNickname())
 				<< std::setw(0) << std::setfill(' ') << " ";
 		std::cout << std::endl;
 	}
