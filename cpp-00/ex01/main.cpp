@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 18:53:00 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 13:15:51 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/21 21:20:37 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@ int main()
 	std::cout << "Welcome to my Phone Book!" << std::endl;
 	std::cout << "You have the following commands available:" << std::endl;
 	std::cout << "[ADD] [SEARCH] [EXIT]" << std::endl;
-	while (1)
+	while (std::cout << "PhoneBook3000> " << std::flush && std::getline(std::cin, input))
 	{
-		std::cout << "PhoneBook3000> " << std::flush;
-		std::getline(std::cin, input);
 		for (int i = 0; i < input.length(); i++)
 			input[i] = toupper(input[i]);
-		if (input.compare("EXIT") == 0)
+		if (input == "EXIT")
 			break ;
-		else if (input.compare("ADD") == 0)
+		else if (input == "ADD")
 			Book.Add();
-		else if (input.compare("SEARCH") == 0)
+		else if (input == "SEARCH")
 			Book.Search();
 	}
 	std::cout << "exit..." << std::endl;
