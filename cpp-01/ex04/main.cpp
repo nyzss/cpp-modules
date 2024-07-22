@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:18:35 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/22 20:34:46 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/22 20:38:43 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av)
 	std::ifstream inputFile(av[1]);
 	if (!inputFile.is_open())
 	{
-		std::cerr << "File not found!, exiting..." << std::endl;
+		std::cerr << "Failure: infile: aborting..." << std::endl;
 		return (1);
 	}
 
@@ -36,7 +36,7 @@ int main(int ac, char **av)
 	if (!outputFile.is_open())
 	{
 		inputFile.close();
-		std::cerr << "Failure to create fail, aborting..." << std::endl;
+		std::cerr << "Failure: outfile: aborting..." << std::endl;
 		return (1);
 	}
 
@@ -45,7 +45,7 @@ int main(int ac, char **av)
 	while (std::getline(inputFile, currentLine))
 	{
 		size_t index;
-		while ((index = currentLine.find(to_replace)) != std::string::npos)
+		while (to_replace != "" && (index = currentLine.find(to_replace)) != std::string::npos)
 		{
 			newLine = currentLine.substr(0, index);
 			newLine += with;
