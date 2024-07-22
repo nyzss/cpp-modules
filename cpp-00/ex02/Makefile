@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/07/22 09:00:34 by okoca            ###   ########.fr        #
+#    Updated: 2024/07/22 10:25:20 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS = ${SRC_FILES:.cpp=.o}
 	${CC} ${CFLAGS} ${DEP_FLAG} -c $< -o ${<:.cpp=.o}
 
 ${NAME}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -I . -o ${NAME}
+	${CC} ${CFLAGS} -I. ${OBJS} -o ${NAME}
 
 -include $(DEP)
 
