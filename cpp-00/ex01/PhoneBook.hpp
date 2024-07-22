@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/22 09:22:39 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/22 09:28:28 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,12 @@ void PhoneBook::Search()
 	std::string new_input;
 	int	index;
 
-	std::cout << "[INDEX]> ";
+	std::cout << "[INDEX]> " << std::flush;
 	try
 	{
 		std::getline(std::cin, new_input);
-		for (size_t i = 0; i < new_input.length(); i++)
+		size_t	NewInputSize = new_input.length();
+		for (size_t i = 0; i < NewInputSize; i++)
 		{
 			if (isdigit(new_input[i]) == 0)
 				throw (std::invalid_argument("Please input a valid index!"));
