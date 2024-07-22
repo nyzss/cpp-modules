@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:09:03 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 21:40:51 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/22 09:22:39 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
+# include <sstream>
 # include <string>
 # include <iomanip>
 # include "Contact.hpp"
@@ -96,7 +97,14 @@ void PhoneBook::Search()
 	try
 	{
 		std::getline(std::cin, new_input);
-		index = std::stoi(new_input) - 1;
+		for (size_t i = 0; i < new_input.length(); i++)
+		{
+			if (isdigit(new_input[i]) == 0)
+				throw (std::invalid_argument("Please input a valid index!"));
+		}
+		std::istringstream is(new_input);
+		is >> index;
+		index--;
 		if (index > MAX_CONTACTS)
 			throw (std::invalid_argument("Index out of bounds (outside of MAX_CONTACTS)"));
 		else if (index >= this->Total)

@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:10:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/21 21:40:33 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/22 09:04:43 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ private:
 	std::string Lastname;
 	std::string Nickname;
 	std::string DarkestSecret;
-	int	PhoneNumber;
+	std::string	PhoneNumber;
 public:
 	Contact();
 	void	InitContact();
 	std::string	GetFirstName();
 	std::string	GetLastName();
 	std::string	GetNickname();
-	int			GetPhone();
+	std::string	GetPhone();
 	std::string	GetDarkest();
 	void		Display();
 };
@@ -57,7 +57,7 @@ std::string	Contact::GetNickname()
 	return (this->Nickname);
 }
 
-int	Contact::GetPhone()
+std::string	Contact::GetPhone()
 {
 	return (this->PhoneNumber);
 }
@@ -84,8 +84,7 @@ void	Contact::InitContact()
 	std::string Lastname;
 	std::string Nickname;
 	std::string DarkestSecret;
-	std::string TmpNumber;
-	long long PhoneNumber;
+	std::string PhoneNumber;
 
 	std::cout << "Enter a first name:" << std::endl;
 	std::cout << "> ";
@@ -102,15 +101,19 @@ void	Contact::InitContact()
 		try
 		{
 			std::cout << "> ";
-			std::getline(std::cin, TmpNumber);
+			std::getline(std::cin, PhoneNumber);
 			if (std::cin.eof())
 			{
 				std::cin.clear();
-				TmpNumber.clear();
+				PhoneNumber.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				return ;
 			}
-			PhoneNumber = std::stoll(TmpNumber);
+			for (size_t i = 0; i < PhoneNumber.length(); i++)
+			{
+				if (isdigit(PhoneNumber[i]) == 0)
+					throw (std::invalid_argument("Invalid argument"));
+			}
 			break ;
 		}
 		catch(const std::invalid_argument & e)
