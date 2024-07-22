@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:33:38 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/22 11:54:43 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/22 12:03:58 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,7 @@
 #include <string>
 #include "Zombie.hpp"
 
-Zombie* newZombie( std::string name )
-{
-	Zombie	*zombie = new Zombie(name);
-
-	return (zombie);
-}
-
-void	randomChump(std::string name)
-{
-	Zombie	zombie(name);
-
-	zombie.announce();
-}
+Zombie	*newZombie(std::string name);
 
 int main()
 {
