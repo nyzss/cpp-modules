@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/23 13:31:11 by okoca             #+#    #+#             */
+/*   Updated: 2024/07/23 22:31:42 by okoca            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Fixed.hpp"
+
+const int Fixed::fractionalBits;
+
+Fixed::Fixed() : value(0)
+{
+	std::cout << "fixed constructor" << std::endl;
+}
+
+Fixed::Fixed(const int value) : value(value << fractionalBits)
+{
+	std::cout << "int constructor" << std::endl;
+}
+
+Fixed::Fixed(const float value) : value(::roundf(this->value * (1 << fractionalBits)))
+{
+	std::cout << "float constructor" << std::endl;
+}
+
+Fixed::Fixed(const Fixed &a) : value(a.value)
+{
+	std::cout << "Copy constructor" << std::endl;
+}
+
+Fixed &Fixed::operator=(const Fixed &a)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &a)
+		this->value = a.value;
+	return *this;
+}
+
+int	Fixed::toInt() const
+{
+	return this->value >> fractionalBits;
+}
+
+float	Fixed::toFloat() const
+{
+	return (float)this->value / (1 << fractionalBits);
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "fixed destructor" << std::endl;
+}
+
+int	Fixed::getRawBits() const
+{
+	return (this->value);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	this->value = raw;
+}
