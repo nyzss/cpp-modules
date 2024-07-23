@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:10:34 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/23 22:28:05 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/23 22:52:32 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ public:
 	int	toInt() const;
 	float	toFloat() const;
 };
+
+std::ostream	&operator<<(std::ostream &out, Fixed const &a);
 
 #endif
