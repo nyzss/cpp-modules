@@ -6,11 +6,13 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:31:11 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/23 14:47:40 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/23 21:42:09 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::fractionalBits;
 
 Fixed::Fixed()
 {
@@ -18,17 +20,17 @@ Fixed::Fixed()
 	this->value = 0;
 }
 
-Fixed::Fixed(const Fixed &a)
+Fixed::Fixed(const Fixed &a) : value(a.value)
 {
-	std::cout << "fixed constructor" << std::endl;
-	this->value = a.value;
+	std::cout << "Copy constructor" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &a)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->value = a.value;
-	return *(this);
+	if (this != &a)
+		this->value = a.value;
+	return *this;
 }
 
 Fixed::~Fixed()
