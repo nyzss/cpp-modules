@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 19:18:35 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/22 20:38:43 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/23 08:16:53 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,23 @@ int main(int ac, char **av)
 
 	std::string	currentLine;
 	std::string	newLine;
+	size_t		occurences = 0;
 	while (std::getline(inputFile, currentLine))
 	{
 		size_t index;
-		while (to_replace != "" && (index = currentLine.find(to_replace)) != std::string::npos)
+		newLine = currentLine;
+		while (to_replace != "" && (index = newLine.find(to_replace)) != std::string::npos)
+		{
+			occurences++;
+			newLine = newLine.substr(index + to_replace.size());
+		}
+		while ((to_replace != "" && (index = currentLine.find(to_replace)) != std::string::npos) && occurences)
 		{
 			newLine = currentLine.substr(0, index);
 			newLine += with;
 			newLine += currentLine.substr(index + to_replace.size());
 			currentLine = newLine;
+			occurences--;
 		}
 		outputFile << currentLine << std::endl;
 	}
