@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:31:11 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/23 23:17:06 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 08:34:20 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,34 @@ bool	Fixed::operator!=(const Fixed &a) const
 	return this->value != a.value;
 }
 
-Fixed	&Fixed::operator+(const Fixed &a) const
+Fixed	Fixed::operator+(const Fixed &a) const
 {
 	Fixed	newFixed = *this;
 	newFixed.value += a.value;
+
+	return newFixed;
+}
+
+Fixed	Fixed::operator*(const Fixed &a) const
+{
+	Fixed	newFixed = *this;
+	newFixed.value *= a.value;
+
+	return newFixed;
+}
+
+Fixed	Fixed::operator-(const Fixed &a) const
+{
+	Fixed	newFixed = *this;
+	newFixed.value -= a.value;
+
+	return newFixed;
+}
+
+Fixed	Fixed::operator/(const Fixed &a) const
+{
+	Fixed	newFixed = *this;
+	newFixed.value /= a.value;
 
 	return newFixed;
 }
@@ -114,4 +138,46 @@ Fixed	&Fixed::operator++()
 {
 	this->value += 1;
 	return *this;
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	tmp(*this);
+	this->operator++();
+
+	return tmp;
+}
+
+Fixed	&Fixed::operator--()
+{
+	this->value -= 1;
+	return *this;
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	tmp(*this);
+	this->operator--();
+
+	return tmp;
+}
+
+static	Fixed &max(Fixed &a, Fixed &b)
+{
+	return a > b ? a : b;
+}
+
+static	const Fixed &max(const Fixed &a, const Fixed &b)
+{
+	return a > b ? a : b;
+}
+
+static	Fixed &min(Fixed &a, Fixed &b)
+{
+	return a < b ? a : b;
+}
+
+static	const Fixed &min(const Fixed &a, const Fixed &b)
+{
+	return a < b ? a : b;
 }
