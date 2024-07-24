@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/07/24 09:42:41 by okoca            ###   ########.fr        #
+#    Updated: 2024/07/24 10:26:32 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 DEP_FLAG = -MMD
 
-SRC_FILES = main.cpp Fixed.cpp Point.cpp
+SRC_FILES = main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 INCLUDES = includes
 

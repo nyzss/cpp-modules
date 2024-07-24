@@ -6,11 +6,14 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:08:26 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 10:20:27 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 10:26:22 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
+
+Fixed	getArea(Point const a, Point const b, Point const c);
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 int main( void )
 {
@@ -21,8 +24,8 @@ int main( void )
 	Point insidePoint(2.0, 1.0);
 	Point outsidePoint(5.0, 5.0);
 
-	std::cout << "[FIRST] SHOULD BE INSIDE: " << Point::bsp(a, b, c, insidePoint) << std::endl;
-	std::cout << "[FIRST] SHOULD BE OUTSIDE: " << Point::bsp(a, b, c, outsidePoint) << std::endl;
+	std::cout << "[FIRST] SHOULD BE INSIDE: " << bsp(a, b, c, insidePoint) << std::endl;
+	std::cout << "[FIRST] SHOULD BE OUTSIDE: " << bsp(a, b, c, outsidePoint) << std::endl;
 	std::cout << std::endl;
 
     Point onVertex(0.0, 0.0);
@@ -33,12 +36,12 @@ int main( void )
     Point centroid((0.0 + 4.0 + 2.0) / 3, (0.0 + 0.0 + 3.0) / 3);
     Point inLine(1.0, 0.0);
 
-    std::cout << "On Vertex: " << Point::bsp(a, b, c, onVertex) << std::endl;
-    std::cout << "On Edge: " << Point::bsp(a, b, c, onEdge) << std::endl;
-    std::cout << "Near Center: " << Point::bsp(a, b, c, nearCenter) << std::endl;
-    std::cout << "Close to Edge: " << Point::bsp(a, b, c, outsideCloseToEdge) << std::endl;
-    std::cout << "Far Outside: " << Point::bsp(a, b, c, farOutside) << std::endl;
-    std::cout << "Centroid: " << Point::bsp(a, b, c, centroid) << std::endl;
-    std::cout << "Degenerate Case (In Line): " << Point::bsp(a, b, c, inLine) << std::endl;
+    std::cout << "On Vertex: " << bsp(a, b, c, onVertex) << std::endl;
+    std::cout << "On Edge: " << bsp(a, b, c, onEdge) << std::endl;
+    std::cout << "Near Center: " << bsp(a, b, c, nearCenter) << std::endl;
+    std::cout << "Close to Edge: " << bsp(a, b, c, outsideCloseToEdge) << std::endl;
+    std::cout << "Far Outside: " << bsp(a, b, c, farOutside) << std::endl;
+    std::cout << "Centroid: " << bsp(a, b, c, centroid) << std::endl;
+    std::cout << "Degenerate Case (In Line): " << bsp(a, b, c, inLine) << std::endl;
 	return 0;
 }

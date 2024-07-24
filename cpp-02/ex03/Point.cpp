@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 08:55:35 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 10:20:54 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 10:24:05 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,12 @@ Point &Point::operator=(const Point &a)
 	return *this;
 }
 
-
-Fixed	Point::getArea(Point const a, Point const b, Point const c)
+Fixed	Point::getX() const
 {
-	Fixed	area = ( (a.x * (b.y - c.y)) + (b.x * (a.y - c.y)) + c.x * (a.y - b.y)) / 2;
-
-	return area;
+	return this->x;
 }
 
-bool Point::bsp( Point const a, Point const b, Point const c, Point const point)
+Fixed	Point::getY() const
 {
-	Fixed	A = Point::getArea(a, b, c);
-
-	Fixed	PAB = Point::getArea(point, a, b);
-	Fixed	PBC = Point::getArea(point, b, c);
-	Fixed	PAC = Point::getArea(point, a, c);
-
-	return PAB + PBC + PAC == A;
+	return this->y;
 }
