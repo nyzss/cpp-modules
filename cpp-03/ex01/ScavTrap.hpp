@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:43:21 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 16:51:27 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:17:30 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 	ScavTrap & operator=(const ScavTrap &value);
 
 	void guardGate();
+	void attack(const std::string &target);
 };
 
 #endif /* SCAVTRAP_HPP */
