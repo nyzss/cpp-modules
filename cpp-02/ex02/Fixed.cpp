@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:31:11 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 08:51:20 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 09:02:41 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@ const int Fixed::fractionalBits;
 
 Fixed::Fixed() : value(0)
 {
-	// std::cout << "fixed constructor" << std::endl;
+	std::cout << "fixed constructor" << std::endl;
 }
 
 Fixed::Fixed(const int i) : value(i << fractionalBits)
 {
-	// std::cout << "int constructor" << std::endl;
+	std::cout << "int constructor" << std::endl;
 }
 
 Fixed::Fixed(const float f) : value(roundf(f * (1 << fractionalBits)))
 {
-	// std::cout << "float constructor" << std::endl;
+	std::cout << "float constructor" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &a) : value(a.value)
 {
-	// std::cout << "Copy constructor" << std::endl;
+	std::cout << "Copy constructor" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &a)
 {
-	// std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &a)
 		this->value = a.value;
 	return *this;
@@ -54,7 +54,7 @@ float	Fixed::toFloat() const
 
 Fixed::~Fixed()
 {
-	// std::cout << "fixed destructor" << std::endl;
+	std::cout << "fixed destructor" << std::endl;
 }
 
 int	Fixed::getRawBits() const
