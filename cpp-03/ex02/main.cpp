@@ -6,13 +6,14 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:45:18 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 18:20:44 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:28:19 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include <limits>
 
 int	main()
 {
@@ -37,4 +38,5 @@ int	main()
 
 	frag.highFivesGuys();
 	frag.takeDamage(10);
+	frag.beRepaired(std::numeric_limits<unsigned int>::max());
 }

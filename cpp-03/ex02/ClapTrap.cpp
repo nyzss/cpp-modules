@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:00:44 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 17:56:04 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:30:56 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ClapTrap::ClapTrap()
 	this->hitPoint = 10;
 	this->energyPoint = 10;
 	this->attackDamage = 0;
-	std::cout << this->name << " constructor!" << std::endl;
+	std::cout << "CLAPTAP: " << this->name << " constructor!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string value)
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap(std::string value)
 	this->hitPoint = 10;
 	this->energyPoint = 10;
 	this->attackDamage = 0;
-	std::cout << this->name << " constructor!" << std::endl;
+	std::cout << "CLAPTAP: " << this->name << " constructor!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &value)

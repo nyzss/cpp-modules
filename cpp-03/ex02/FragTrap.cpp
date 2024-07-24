@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:43:40 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 18:13:12 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:30:31 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ FragTrap::FragTrap()
 	this->hitPoint = 100;
 	this->energyPoint = 100;
 	this->attackDamage = 30;
+	std::cout << "FRAGTRAP: " << this->name << " constructor!" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name)
@@ -26,6 +27,7 @@ FragTrap::FragTrap(std::string name)
 	this->hitPoint = 100;
 	this->energyPoint = 100;
 	this->attackDamage = 30;
+	std::cout << "FRAGTRAP: " << this->name << " constructor!" << std::endl;
 }
 
 FragTrap::FragTrap (const FragTrap &value)

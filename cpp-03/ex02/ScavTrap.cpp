@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:43:40 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 18:17:18 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:30:07 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ ScavTrap::ScavTrap()
 	this->hitPoint = 100;
 	this->energyPoint = 50;
 	this->attackDamage = 20;
+	std::cout << "SCAVTRAP: " << this->name << " constructor!" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)
@@ -26,6 +27,7 @@ ScavTrap::ScavTrap(std::string name)
 	this->hitPoint = 100;
 	this->energyPoint = 50;
 	this->attackDamage = 20;
+	std::cout << "SCAVTRAP: " << this->name << " constructor!" << std::endl;
 }
 
 ScavTrap::ScavTrap (const ScavTrap &value)
