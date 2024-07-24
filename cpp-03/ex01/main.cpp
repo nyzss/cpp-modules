@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:45:18 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 17:49:22 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:17:59 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ int	main()
 
 	haha = scav;
 	haha.guardGate();
+	scav.attack(haha.getName());
 }

@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:43:21 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 18:17:30 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:19:59 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : ClapTrap
+class ScavTrap : public ClapTrap
 {
 private:
 public:
