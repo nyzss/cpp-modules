@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:43:40 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 16:52:02 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 17:56:01 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 ScavTrap::ScavTrap()
 {
-
+	this->name = "No Name";
+	this->hitPoint = 100;
+	this->energyPoint = 50;
+	this->attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name)
@@ -25,18 +28,30 @@ ScavTrap::ScavTrap(std::string name)
 	this->attackDamage = 20;
 }
 
-ScavTrap::~ScavTrap()
+ScavTrap::ScavTrap (const ScavTrap &value)
 {
-
+	this->name = value.name;
+	this->hitPoint = value.hitPoint;
+	this->energyPoint = value.energyPoint;
+	this->attackDamage = value.attackDamage;
+	std::cout << "new ScavTrap " << this->name << " copied from " << value.name << "!" << std::endl;
 }
 
 ScavTrap & ScavTrap::operator=(const ScavTrap &value)
 {
 	if (this != &value)
 	{
-		// Copy data members from value to this object
+		this->name = value.name;
+		this->hitPoint = value.hitPoint;
+		this->energyPoint = value.energyPoint;
+		this->attackDamage = value.attackDamage;
 	}
 	return *this;
+}
+
+ScavTrap::~ScavTrap()
+{
+	std::cout << "ScavTrap " << this->name << " destroyed!" << std::endl;
 }
 
 void	ScavTrap::guardGate()
