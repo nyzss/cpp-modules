@@ -6,13 +6,13 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:31:11 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 09:02:41 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 10:11:48 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int Fixed::fractionalBits;
+const int Fixed::fractionalBits = 8;
 
 Fixed::Fixed() : value(0)
 {

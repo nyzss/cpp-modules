@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:10:34 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/24 08:34:04 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/24 10:12:07 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 #include <string>
 #include <cmath>
 
-// : >, <, >=, <=, == and !=
 class Fixed
 {
 private:
 	int	value;
-	static const int	fractionalBits = 8;
+	static const int	fractionalBits;
 public:
 	static	Fixed &max(Fixed &a, Fixed &b);
 	static	const Fixed &max(const Fixed &a, const Fixed &b);
