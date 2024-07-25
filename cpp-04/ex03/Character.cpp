@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:44:53 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 17:12:15 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 17:23:17 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	Character::use(int idx, ICharacter &target)
 	if (this->materias[idx] == NULL)
 	{
 		std::cout << this->name << " wasn't able to cast a Materia against " << target.getName() << std::endl;
+		return ;
 	}
 	std::cout << this->name << ": ";
 	this->materias[idx]->use(target);
