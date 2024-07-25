@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:44:29 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:55:04 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 15:56:58 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ private:
 	AMateria	**materias;
 	std::string	name;
 	int	total;
+	int	maxMateria;
 public:
 	Character ();
 	Character(const std::string & name);
