@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:44:53 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:57:50 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 17:04:12 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Character::Character()
 	this->total = 0;
 	this->name = "No name adventurer";
 	this->materias = new AMateria*[maxMateria];
-	for (int i = 0; i < maxMateria; i++)
+	for (int i = 0; i < this->maxMateria; i++)
 		this->materias[i] = NULL;
 	std::cout << this->name << " has signed up as an adventurer" << std::endl;
 }
@@ -29,7 +29,7 @@ Character::Character(const std::string & name)
 	this->total = 0;
 	this->name = name;
 	this->materias = new AMateria*[maxMateria];
-	for (int i = 0; i < maxMateria; i++)
+	for (int i = 0; i < this->maxMateria; i++)
 		this->materias[i] = NULL;
 	std::cout << this->name << " has signed up as an adventurer" << std::endl;
 }
@@ -39,14 +39,14 @@ Character::Character(const Character &value)
 	this->total = value.total;
 	this->name = value.name;
 	this->materias = new AMateria*[maxMateria];
-	for (int i = 0; i < maxMateria; i++)
+	for (int i = 0; i < this->maxMateria; i++)
 		this->materias[i] = value.materias[i]->clone();
 	std::cout << this->name << " is a new student of " << value.name << std::endl;
 }
 
 Character::~Character()
 {
-	for (int i = 0; i < maxMateria; i++)
+	for (int i = 0; i < this->maxMateria; i++)
 	{
 		if (this->materias[i] != NULL)
 			delete this->materias[i];
@@ -59,7 +59,7 @@ Character & Character::operator=(const Character &value)
 {
 	if (this != &value)
 	{
-		for (int i = 0; i < maxMateria; i++)
+		for (int i = 0; i < this->maxMateria; i++)
 		{
 			if (this->materias[i] != NULL)
 				delete this->materias[i];
@@ -79,12 +79,12 @@ const std::string & Character::getName() const
 
 void	Character::equip(AMateria *m)
 {
-	if (total == maxMateria)
+	if (this->total == this->maxMateria)
 	{
 		std::cout << this->name << " has reached the maximum amount of Materia to equip!" << std::endl;
 		return ;
 	}
-	for (int i = 0; i < maxMateria; i ++)
+	for (int i = 0; i < this->maxMateria; i ++)
 	{
 		if (this->materias[i] == NULL)
 		{
@@ -97,7 +97,7 @@ void	Character::equip(AMateria *m)
 
 void	Character::unequip(int idx)
 {
-	if (total == 0 || this->materias[idx] == NULL)
+	if (this->total == 0 || this->materias[idx] == NULL)
 	{
 		std::cout << this->name << " has no such materia to unequip!" << std::endl;
 		return ;
