@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:41:33 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 17:24:31 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 17:27:58 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ int main()
 
 	tmp = src->createMateria("ice");
 	AMateria *newOne = src->createMateria("cure");
+	AMateria *anotherTmp = new Cure();
 
 	me->equip(tmp);
 	other->equip(newOne);
+	other->equip(anotherTmp);
 
 	tmp = src->createMateria("cure");
 
@@ -46,12 +48,16 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 	other->use(0, *me);
+	other->use(1, *me);
 	other->use(3, *me);
+	other->unequip(1);
+
 
 	delete bob;
 	delete me;
 	delete other;
 	delete src;
 	delete cureTmp;
+	delete anotherTmp;
 	return 0;
 }
