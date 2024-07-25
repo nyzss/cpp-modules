@@ -6,15 +6,14 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:30:22 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:07:40 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:48:06 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef ICE_HPP
-# define ICE_HPP
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
@@ -28,5 +27,3 @@ public:
 	AMateria* clone() const;
 	void use(ICharacter& target);
 };
-
-#endif /* ICE_HPP */

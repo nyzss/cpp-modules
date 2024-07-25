@@ -6,13 +6,11 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:25:59 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:45:44 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:47:32 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
 
 #include <iostream>
 #include <string>
@@ -37,5 +35,3 @@ public:
 
 	virtual void use(ICharacter& target);
 };
-
-#endif /* AMATERIA_HPP */

@@ -6,13 +6,11 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:42:14 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:35:35 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:47:42 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
 
 #include "AMateria.hpp"
 #include "Ice.hpp"
@@ -28,5 +26,3 @@ class ICharacter
 	virtual void unequip(int idx) = 0;
 	virtual void use(int idx, ICharacter& target) = 0;
 };
-
-#endif /* ICHARACTER_HPP */
