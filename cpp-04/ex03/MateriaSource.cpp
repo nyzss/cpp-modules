@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:18:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:33:01 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:58:12 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ MateriaSource::MateriaSource(const MateriaSource &value)
 MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < maxMateria; i++)
-		delete this->materias[i];
+	{
+		if (this->materias[i] != NULL)
+			delete this->materias[i];
+	}
 	delete[] this->materias;
 	std::cout << "MateriaSource has been destroyed!" << std::endl;
 }
@@ -44,7 +47,10 @@ MateriaSource & MateriaSource::operator=(const MateriaSource &value)
 	if (this != &value)
 	{
 		for (int i = 0; i < maxMateria; i++)
-			delete this->materias[i];
+		{
+			if (this->materias[i] != NULL)
+				delete this->materias[i];
+		}
 		this->total = value.total;
 		for (int i = 0; i < maxMateria; i++)
 			this->materias[i] = value.materias[i]->clone();

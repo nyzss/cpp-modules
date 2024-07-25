@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:44:53 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:52:06 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:57:50 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ Character::Character(const Character &value)
 Character::~Character()
 {
 	for (int i = 0; i < maxMateria; i++)
-		delete this->materias[i];
+	{
+		if (this->materias[i] != NULL)
+			delete this->materias[i];
+	}
 	delete[] this->materias;
 	std::cout << this->name << " has been killed in battle.." << std::endl;
 }
@@ -57,7 +60,10 @@ Character & Character::operator=(const Character &value)
 	if (this != &value)
 	{
 		for (int i = 0; i < maxMateria; i++)
-			delete this->materias[i];
+		{
+			if (this->materias[i] != NULL)
+				delete this->materias[i];
+		}
 		this->total = value.total;
 		this->name = value.name;
 		for (int i = 0; i < maxMateria; i++)
