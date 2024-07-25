@@ -1,52 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 15:26:46 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:46:05 by okoca            ###   ########.fr       */
+/*   Created: 2024/07/25 15:44:53 by okoca             #+#    #+#             */
+/*   Updated: 2024/07/25 15:45:12 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Character.hpp"
 
-AMateria::AMateria()
+Character::Character()
 {
 
 }
 
-AMateria::AMateria(std::string const & type)
-{
-	this->type = type;
-}
-
-AMateria::AMateria(const AMateria &value)
+Character::Character(const Character &value)
 {
 
 }
 
-AMateria::~AMateria()
+Character::~Character()
 {
 
 }
 
-AMateria & AMateria::operator=(const AMateria &value)
+Character & Character::operator=(const Character &value)
 {
 	if (this != &value)
 	{
 		// Copy data members from value to this object
 	}
 	return *this;
-}
-
-std::string const & AMateria::getType() const
-{
-	return this->type;
-}
-
-void AMateria::use(ICharacter& target)
-{
-	std::cout << "Using AMateria on " << target.getName() << std::endl;
 }

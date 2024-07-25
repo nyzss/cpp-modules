@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 15:25:59 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:45:44 by okoca            ###   ########.fr       */
+/*   Created: 2024/07/25 15:44:29 by okoca             #+#    #+#             */
+/*   Updated: 2024/07/25 15:46:47 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
 
-#include <iostream>
-#include <string>
+#pragma once
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
 #include "ICharacter.hpp"
 
-class AMateria
+class Character : public ICharacter
 {
 private:
-protected:
-	std::string	type;
 public:
-	AMateria ();
-	AMateria(std::string const & type);
-	AMateria (const AMateria &value);
-	~AMateria ();
-	AMateria & operator=(const AMateria &value);
+	Character ();
+	Character (const Character &value);
+	~Character ();
+	Character & operator=(const Character &value);
 
-	std::string const & getType() const; //Returns the materia type
-
-	virtual AMateria* clone() const = 0;
-
-	virtual void use(ICharacter& target);
+	std::string const & getName() const;
+	void equip(AMateria* m);
+	void unequip(int idx);
+	void use(int idx, ICharacter& target);
 };
 
-#endif /* AMATERIA_HPP */
+#endif /* CHARACTER_HPP */
