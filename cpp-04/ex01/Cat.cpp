@@ -28,8 +28,7 @@ Cat::Cat(const Cat &value)
 
 Cat::~Cat()
 {
-	if (this->brain)
-		delete this->brain;
+	delete this->brain;
 	std::cout << this->type <<  " has been destroyed!" << std::endl;
 }
 
@@ -37,6 +36,7 @@ Cat & Cat::operator=(const Cat &value)
 {
 	if (this != &value)
 	{
+		delete this->brain;
 		this->type = value.type;
 		this->brain = new Brain(*(value.brain));
 	}

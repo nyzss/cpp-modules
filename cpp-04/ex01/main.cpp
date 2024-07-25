@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:12:09 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 14:52:47 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 15:16:04 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,17 @@ int main()
 		delete list[i];
 
 	delete[] list;
+
+	const Animal *tmp = new Cat;
+	Animal *lol = new Cat;
+
+	*lol = *tmp;
+
+	tmp->makeSound();
+	delete tmp;
+
+	lol->makeSound();
+	delete lol;
+
 	return 0;
 }
