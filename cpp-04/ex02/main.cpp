@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:12:09 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:21:22 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 15:22:35 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int main()
 {
 	const Animal *tmp = new Cat;
 	Animal *lol = new Cat;
+
+	// shouldnt work
+	// const Animal *shouldntWork = new Animal;
+	// shouldntWork->makeSound();
 
 	*lol = *tmp;
 
