@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:59:43 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 13:55:05 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 14:31:57 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include <iostream>
 #include <string>
+
+typedef	unsigned long uint32_t;
 
 #include "Brain.hpp"
 
