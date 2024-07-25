@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:44:53 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:05:10 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:20:37 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Character::Character(const Character &value)
 	this->name = value.name;
 	this->materias = new AMateria*[maxMateria];
 	for (int i = 0; i < maxMateria; i++)
-		this->materias[i] = value.materias[i];
+		this->materias[i] = value.materias[i]->clone();
 	std::cout << this->name << " is a new student of " << value.name << std::endl;
 }
 
@@ -55,11 +55,12 @@ Character & Character::operator=(const Character &value)
 {
 	if (this != &value)
 	{
+		for (int i = 0; i < maxMateria; i++)
+			delete this->materias[i];
 		this->total = value.total;
 		this->name = value.name;
-		this->materias = new AMateria*[maxMateria];
 		for (int i = 0; i < maxMateria; i++)
-			this->materias[i] = value.materias[i];
+			this->materias[i] = value.materias[i]->clone();
 	}
 	return *this;
 }
@@ -105,5 +106,10 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-
+	if (this->materias[idx] == NULL)
+	{
+		std::cout << this->name << " wasn't able to cast a Materia against " << target.getName() << std::endl;
+	}
+	std::cout << this->name << ": ";
+	this->materias[idx]->use(target);
 }
