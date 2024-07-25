@@ -6,15 +6,17 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:42:14 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:47:42 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:51:06 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "AMateria.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
+// #include "AMateria.hpp"
+
+#include <iostream>
+#include <string>
+class AMateria;
 
 class ICharacter
 {
