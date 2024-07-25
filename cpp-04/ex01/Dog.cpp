@@ -47,3 +47,9 @@ void	Dog::makeSound() const
 {
 	std::cout << this->type <<  ": *Bark*" << std::endl;
 }
+
+void	Dog::showIdeas(uint32_t n) const
+{
+	for (unsigned int i = 0; i < n; i++)
+		std::cout << this->brain->getIdea(i) << std::endl;
+}

@@ -29,6 +29,7 @@ public:
 	~Cat ();
 	Cat & operator=(const Cat &value);
 	void	makeSound() const;
+	void	showIdeas(uint32_t n) const;
 };
 
 #endif /* CAT_HPP */

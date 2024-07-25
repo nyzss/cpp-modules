@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:28:40 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 13:45:04 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 14:24:10 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@
 #include <iostream>
 #include <string>
 
-# define MAX_IDEAS 100
-
 class Brain
 {
 private:
 	std::string	*ideas;
+	uint32_t maxIdeas;
 public:
 	Brain ();
 	Brain (const Brain &value);
+	Brain(uint32_t maxIdeas);
 	~Brain ();
 	Brain & operator=(const Brain &value);
+	const std::string & getIdea(uint32_t n) const;
+	void	showIdeas() const;
 };
 
 #endif /* BRAIN_HPP */

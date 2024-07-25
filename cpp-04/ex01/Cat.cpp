@@ -22,6 +22,7 @@ Cat::Cat() : Animal("Cat_Animal")
 Cat::Cat(const Cat &value)
 {
 	this->type = value.type;
+	this->brain = new Brain(*(value.brain));
 	std::cout << this->type <<  " has been constructed from " << value.type << "!" << std::endl;
 }
 
@@ -37,8 +38,15 @@ Cat & Cat::operator=(const Cat &value)
 	if (this != &value)
 	{
 		this->type = value.type;
+		this->brain = new Brain(*(value.brain));
 	}
 	return *this;
+}
+
+void	Cat::showIdeas(uint32_t n) const
+{
+	for (unsigned int i = 0; i < n; i++)
+		std::cout << this->brain->getIdea(i) << std::endl;
 }
 
 void	Cat::makeSound() const

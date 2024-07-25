@@ -29,6 +29,7 @@ public:
 	~Dog ();
 	Dog & operator=(const Dog &value);
 	void	makeSound() const;
+	void	showIdeas(uint32_t n) const;
 };
 
 #endif /* DOG_HPP */
