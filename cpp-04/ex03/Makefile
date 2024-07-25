@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/07/25 16:41:01 by okoca            ###   ########.fr        #
+#    Updated: 2024/07/25 16:44:30 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ DEP_FLAG = -MMD
 
 SRC_FILES = AMateria.cpp Character.cpp MateriaSource.cpp Cure.cpp Ice.cpp main.cpp
 
-INCLUDES = includes
+INCLUDES = .
 
-NAME = animal
+NAME = magic
 
 OBJS = ${SRC_FILES:.cpp=.o}
 
