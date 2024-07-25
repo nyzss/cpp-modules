@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:18:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 17:03:23 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 17:18:23 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 MateriaSource::MateriaSource()
 {
-	int	maxMateria = 4;
 	this->total = 0;
 	this->materias = new AMateria*[maxMateria];
-	for (int i = 0; i < this->maxMateria; i++)
+	for (int i = 0; i < maxMateria; i++)
 		this->materias[i] = NULL;
 	std::cout << "MateriaSource has been constructed" << std::endl;
 }
@@ -26,14 +25,14 @@ MateriaSource::MateriaSource(const MateriaSource &value)
 {
 	this->total = value.total;
 	this->materias = new AMateria*[maxMateria];
-	for (int i = 0; i < this->maxMateria; i++)
+	for (int i = 0; i < maxMateria; i++)
 		this->materias[i] = value.materias[i]->clone();
 	std::cout << "MateriaSource copy constructor" << std::endl;
 }
 
 MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < this->maxMateria; i++)
+	for (int i = 0; i < maxMateria; i++)
 	{
 		if (this->materias[i] != NULL)
 			delete this->materias[i];
@@ -46,13 +45,13 @@ MateriaSource & MateriaSource::operator=(const MateriaSource &value)
 {
 	if (this != &value)
 	{
-		for (int i = 0; i < this->maxMateria; i++)
+		for (int i = 0; i < maxMateria; i++)
 		{
 			if (this->materias[i] != NULL)
 				delete this->materias[i];
 		}
 		this->total = value.total;
-		for (int i = 0; i < this->maxMateria; i++)
+		for (int i = 0; i < maxMateria; i++)
 			this->materias[i] = value.materias[i]->clone();
 	}
 	return *this;
@@ -60,7 +59,7 @@ MateriaSource & MateriaSource::operator=(const MateriaSource &value)
 
 void MateriaSource::learnMateria(AMateria* materia)
 {
-	if (this->total == this->maxMateria)
+	if (this->total == maxMateria)
 	{
 		std::cout << "Max materia has been reached!" << std::endl;
 		return ;
@@ -77,7 +76,7 @@ void MateriaSource::learnMateria(AMateria* materia)
 }
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i < this->maxMateria; i++)
+	for (int i = 0; i < maxMateria; i++)
 	{
 		if (this->materias[i] != NULL && this->materias[i]->getType() == type)
 			return this->materias[i]->clone();

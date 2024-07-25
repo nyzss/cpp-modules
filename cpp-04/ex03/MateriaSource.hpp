@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 16:17:53 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:29:18 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 17:12:34 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class MateriaSource : public IMateriaSource
 private:
 	AMateria	**materias;
 	int	total;
-	int	maxMateria;
+	static const int	maxMateria = 4;
 public:
 	MateriaSource ();
 	MateriaSource (const MateriaSource &value);

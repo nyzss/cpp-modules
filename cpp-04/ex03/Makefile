@@ -6,13 +6,13 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/07/25 16:44:30 by okoca            ###   ########.fr        #
+#    Updated: 2024/07/25 17:04:58 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 DEP_FLAG = -MMD
 
