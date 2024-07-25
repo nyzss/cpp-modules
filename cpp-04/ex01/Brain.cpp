@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:29:44 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 14:35:40 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 14:51:10 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ Brain::~Brain()
 {
 	if (this->ideas)
 		delete[] this->ideas;
+	std::cout << "Brain destroyed, reduced to ashes.." << std::endl;
 }
 
 Brain & Brain::operator=(const Brain &value)

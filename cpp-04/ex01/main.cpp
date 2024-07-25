@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:12:09 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 14:11:45 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 14:52:47 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,29 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
+const int	numberAnimal = 100;
+
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* i = new Cat();
-	const Animal* j = new Dog();
 
+	Animal **list = new Animal*[numberAnimal];
 
-	std::cout << "Animal: " << meta->getType() << " " << std::endl;
-	std::cout << "Animal: " << j->getType() << " " << std::endl;
-	std::cout << "Animal: " << i->getType() << " " << std::endl;
+	for (int i = 0; i < numberAnimal; i++)
+	{
+		if (i < numberAnimal / 2)
+		{
+			list[i] = new Dog();
+			continue;
+		}
+		list[i] = new Cat();
+	}
 
-	meta->makeSound();
-	i->makeSound();
-	j->makeSound();
+	for (int i = 0; i < numberAnimal; i++)
+		list[i]->makeSound();
 
-	delete meta;
-	delete i;
-	delete j;
+	for (int i = 0; i < numberAnimal; i++)
+		delete list[i];
+
+	delete[] list;
 	return 0;
 }
