@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:30:37 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:36:56 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:08:04 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,9 @@ AMateria* Ice::clone() const
 
 	newIce->type = this->type;
 	return newIce;
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

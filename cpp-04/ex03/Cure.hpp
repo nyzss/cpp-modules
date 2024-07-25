@@ -26,6 +26,7 @@ public:
 	Cure & operator=(const Cure &value);
 
 	AMateria* clone() const;
+	void use(ICharacter& target);
 };
 
 #endif /* CURE_HPP */

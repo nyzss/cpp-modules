@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:44:53 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 16:03:59 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:05:10 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,9 @@ void	Character::unequip(int idx)
 	}
 	std::cout << this->name <<  " has successfully unequiped the Materia " << this->materias[idx]->getType() << "!" << std::endl;
 	this->materias[idx] = NULL;
+}
+
+void	Character::use(int idx, ICharacter &target)
+{
+
 }
