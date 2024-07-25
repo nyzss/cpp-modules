@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:26:46 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:46:05 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:42:25 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 AMateria::AMateria()
 {
-
+	std::cout << "AMatera constrcuted" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type)
 {
 	this->type = type;
+	std::cout << "AMatera constrcuted" << this->type << std::endl;
 }
 
 AMateria::AMateria(const AMateria &value)
 {
-
+	this->type = value.type;
+	std::cout << "AMatera constrcuted" << std::endl;
 }
 
 AMateria::~AMateria()
 {
-
+	std::cout << "AMatera destructed" << std::endl;
 }
 
 AMateria & AMateria::operator=(const AMateria &value)
 {
 	if (this != &value)
 	{
-		// Copy data members from value to this object
+		this->type = value.type;
 	}
 	return *this;
 }

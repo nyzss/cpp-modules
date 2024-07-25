@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/07/25 15:41:49 by okoca            ###   ########.fr        #
+#    Updated: 2024/07/25 16:41:01 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 DEP_FLAG = -MMD
 
-SRC_FILES = main.cpp AMateria.cpp Cure.cpp Ice.cpp
+SRC_FILES = AMateria.cpp Character.cpp MateriaSource.cpp Cure.cpp Ice.cpp main.cpp
 
 INCLUDES = includes
 

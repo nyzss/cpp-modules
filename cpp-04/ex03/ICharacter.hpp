@@ -6,14 +6,17 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:42:14 by okoca             #+#    #+#             */
-/*   Updated: 2024/07/25 15:47:15 by okoca            ###   ########.fr       */
+/*   Updated: 2024/07/25 16:35:35 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
+
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 class ICharacter
 {
