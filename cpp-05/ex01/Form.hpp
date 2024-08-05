@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:13:58 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 11:07:02 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 11:58:56 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "Bureaucrat.hpp"
-
 #include <iostream>
 #include <string>
 
-class Bureaucrat;
+#include "Bureaucrat.hpp"
 
 class Form
 {
