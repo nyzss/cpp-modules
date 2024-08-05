@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:14:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 13:51:18 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 14:16:29 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,6 @@ AForm & AForm::operator=(const AForm &value)
 	}
 	return *this;
 }
-
-class AForm::GradeTooHighException : public std::exception
-{
-public:
-	const char*	what() const throw()
-	{
-		return "[FORM][HIGH] Grade too high!!!!";
-	}
-};
-
-class AForm::GradeTooLowException : public std::exception
-{
-public:
-	const char*	what() const throw()
-	{
-		return "[FORM][LOW] Grade too low!!!!";
-	}
-};
 
 std::string	AForm::getName() const
 {
@@ -109,6 +91,15 @@ void	AForm::beSigned(const Bureaucrat& value)
 void	AForm::setName(std::string	name)
 {
 	this->formName = name;
+}
+
+bool	AForm::checkRequirement(const Bureaucrat &value) const
+{
+	if (!this->getSigned())
+		throw AForm::FormNotSignedException();
+	if (value.getGrade() > this->getExecRequired())
+		throw AForm::GradeTooLowException();
+	return true;
 }
 
 std::ostream	&operator<<(std::ostream& stream, const AForm& value)

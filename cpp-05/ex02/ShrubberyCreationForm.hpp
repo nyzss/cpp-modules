@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 13:29:14 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 13:30:09 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 14:32:42 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@
 
 #include "AForm.hpp"
 
+#include <fstream>
+
 class ShrubberyCreationForm : public AForm
 {
 private:
 protected:
 public:
 	ShrubberyCreationForm ();
+	ShrubberyCreationForm (std::string target);
 	ShrubberyCreationForm (const ShrubberyCreationForm &value);
 	~ShrubberyCreationForm ();
 	ShrubberyCreationForm & operator=(const ShrubberyCreationForm &value);
+	void	execute(const Bureaucrat & executor) const;
 };
 
 #endif /* SHRUBBERYCREATIONFORM_HPP */
