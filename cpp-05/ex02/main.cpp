@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 09:04:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 15:43:57 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 16:20:07 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main()
 		{
 			Bureaucrat	mike("Mike", 10);
 
-			ShrubberyCreationForm	form;
+			ShrubberyCreationForm	form("forest");
 			mike.executeForm(form);
 			mike.signForm(form);
 
@@ -42,7 +42,7 @@ int	main()
 		{
 			Bureaucrat	max("Max", 10);
 
-			RobotomyRequestForm	form;
+			RobotomyRequestForm	form("non-robot");
 			max.signForm(form);
 
 			max.executeForm(form);
@@ -58,7 +58,7 @@ int	main()
 		{
 			Bureaucrat	mo("Mo", 10);
 
-			PresidentialPardonForm form;
+			PresidentialPardonForm form("me");
 			mo.signForm(form);
 
 			mo.executeForm(form);

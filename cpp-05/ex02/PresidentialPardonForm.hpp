@@ -22,6 +22,7 @@ private:
 protected:
 public:
 	PresidentialPardonForm ();
+	PresidentialPardonForm (std::string target);
 	PresidentialPardonForm (const PresidentialPardonForm &value);
 	~PresidentialPardonForm ();
 	PresidentialPardonForm & operator=(const PresidentialPardonForm &value);

@@ -16,7 +16,12 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request Form", 72, 
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &value) : AForm(value.getName(), 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy Request Form", 72, 45)
+{
+	this->target = target;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &value) : AForm(value)
 {
 }
 
@@ -29,6 +34,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 	if (this != &value)
 	{
 		this->setName(value.getName());
+		this->target = value.target;
 	}
 	return *this;
 }
@@ -39,5 +45,5 @@ void	RobotomyRequestForm::execute(const Bureaucrat & executor) const
 
 	std::cout << "Some drilling noise..." << std::endl;
 	const char	*robotomy = std::rand() % 2 == 0 ? "been robotomized" : "not been robotomized";
-	std::cout << executor.getName() << " has " << robotomy << std::endl;
+	std::cout << this->target << " has " << robotomy << std::endl;
 }
