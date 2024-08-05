@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 09:04:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 16:20:07 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 16:47:38 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 #include <ctime>
 
@@ -23,45 +24,14 @@ int	main()
 	{
 		try
 		{
-			Bureaucrat	mike("Mike", 10);
+			Bureaucrat	mo("mo", 10);
+			Intern	intern;
 
-			ShrubberyCreationForm	form("forest");
-			mike.executeForm(form);
-			mike.signForm(form);
+			AForm *form	= intern.makeForm("shrubberry creation", "my home");
 
-			mike.executeForm(form);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-
-	{
-		try
-		{
-			Bureaucrat	max("Max", 10);
-
-			RobotomyRequestForm	form("non-robot");
-			max.signForm(form);
-
-			max.executeForm(form);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-
-	{
-		try
-		{
-			Bureaucrat	mo("Mo", 10);
-
-			PresidentialPardonForm form("me");
-			mo.signForm(form);
-
-			mo.executeForm(form);
+			mo.signForm(*form);
+			AForm *invalid	= intern.makeForm("haha form", "lol");
+			mo.signForm(*invalid);
 		}
 		catch(const std::exception& e)
 		{
