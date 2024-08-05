@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:14:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 11:59:08 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 15:03:05 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,10 @@ void	Form::beSigned(const Bureaucrat& value)
 	if (this->signRequired < value.getGrade())
 	{
 		this->formSigned = false;
-		value.signForm(*this, this->formSigned);
 		throw Form::GradeTooLowException();
 	}
 	else
-	{
 		this->formSigned = true;
-		value.signForm(*this, this->formSigned);
-	}
 }
 
 std::ostream	&operator<<(std::ostream& stream, const Form& value)

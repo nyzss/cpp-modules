@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:05:19 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 11:06:20 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 15:04:44 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,17 @@ void	Bureaucrat::decrementGrade()
 	std::cout << this->name << " fell off.. Now at " << this->grade << std::endl;
 }
 
-void	Bureaucrat::signForm(const Form &form, bool formSigned) const
+void	Bureaucrat::signForm(Form &form) const
 {
-	if (formSigned)
+	try
+	{
+		form.beSigned(*this);
 		std::cout << this->name << " has signed form " << form.getName() << std::endl;
-	else
+	}
+	catch(const std::exception& e)
+	{
 		std::cout << this->name << " couldn't sign form " << form.getName() << " because the bureaucrat grade is too low!" << std::endl;
+	}
 }
 
 std::ostream &operator<<(std::ostream& stream, const Bureaucrat& value)

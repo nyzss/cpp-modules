@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 09:04:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 11:49:55 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 15:05:24 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main()
 			mikeForm.beSigned(mike);
 			mike.decrementGrade();
 			mike.decrementGrade();
-			mikeForm.beSigned(mike);
+			mike.signForm(mikeForm);
 		}
 		catch(const std::exception& e)
 		{
@@ -38,7 +38,7 @@ int	main()
 			Bureaucrat	mo("Mo", 2);
 			Form		moForm("Mo Form", 1, 10);
 
-			moForm.beSigned(mo);
+			mo.signForm(moForm);
 		}
 		catch(const std::exception& e)
 		{
