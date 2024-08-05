@@ -39,6 +39,7 @@ public:
 	class GradeTooHighException;
 	class GradeTooLowException;
 	void	signForm(AForm &form) const;
+	void	executeForm(AForm const & form) const;
 };
 
 std::ostream &operator<<(std::ostream& stream, const Bureaucrat& value);

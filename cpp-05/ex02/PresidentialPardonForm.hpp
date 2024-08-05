@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 13:29:14 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 15:46:28 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 14:57:56 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
 
-#include <cstdlib>
-
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
 protected:
 public:
-	RobotomyRequestForm ();
-	RobotomyRequestForm (const RobotomyRequestForm &value);
-	~RobotomyRequestForm ();
-	RobotomyRequestForm & operator=(const RobotomyRequestForm &value);
+	PresidentialPardonForm ();
+	PresidentialPardonForm (const PresidentialPardonForm &value);
+	~PresidentialPardonForm ();
+	PresidentialPardonForm & operator=(const PresidentialPardonForm &value);
 	void	execute(const Bureaucrat & executor) const;
 };
 
-#endif /* ROBOTOMYREQUESTFORM_HPP */
+#endif /* PRESIDENTIALPARDONFORM_HPP */

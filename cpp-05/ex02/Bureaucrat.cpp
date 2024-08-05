@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:05:19 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 15:19:44 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 15:51:49 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,20 @@ void	Bureaucrat::signForm(AForm &form) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->name << " couldn't sign form " << form.getName() << " because the bureaucrat grade is too low!" << std::endl;
+		std::cerr << this->name << " couldn't sign form " << form.getName() << " because the bureaucrat grade is too low!" << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->name << " couldn't execute " << form.getName() << std::endl;
 	}
 }
 
