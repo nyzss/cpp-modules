@@ -39,4 +39,6 @@ public:
 
 };
 
+std::ostream &operator<<(std::ostream& stream, const Bureaucrat& value);
+
 #endif /* BUREAUCRAT_HPP */

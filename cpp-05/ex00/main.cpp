@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 09:04:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 09:35:12 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 10:21:06 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main()
 			mo.decrementGrade(); // 3
 			mo.incrementGrade(); // 2
 			mo.incrementGrade(); // 1
+			std::cout << mo << std::endl;
 			mo.incrementGrade(); // 0
 			std::cout << "This should NEVER show!" << std::endl;
 		}
@@ -51,6 +52,7 @@ int	main()
 			max.decrementGrade(); // 148
 			max.decrementGrade(); // 149
 			max.decrementGrade(); // 150
+			std::cout << max << std::endl;
 			max.decrementGrade(); // 151 !!
 			std::cout << "this shouldn't show up!!" << std::endl;
 		}

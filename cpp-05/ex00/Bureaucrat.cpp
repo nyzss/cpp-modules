@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:05:19 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 09:31:13 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 10:22:11 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,10 @@ void	Bureaucrat::decrementGrade()
 		throw Bureaucrat::GradeTooLowException();
 	this->grade++;
 	std::cout << this->name << " fell off.. Now at " << this->grade << std::endl;
+}
+
+std::ostream &operator<<(std::ostream& stream, const Bureaucrat& value)
+{
+	stream << value.getName() << ", bureaucrat grade " << value.getGrade();
+	return (stream);
 }
