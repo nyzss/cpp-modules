@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:13:58 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 14:55:54 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 16:19:13 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ private:
 	const int	signRequired;
 	const int	execRequired;
 protected:
+	std::string	target;
 public:
 	AForm ();
 	AForm (std::string name, int signRequired, int execRequired);
@@ -49,10 +50,12 @@ public:
 		const char*	what() const throw() { return "[FORM][EXECUTE] Form not signed, cannot execute!!!!"; }
 	};
 	std::string	getName() const;
+	std::string	getTarget() const;
 	bool	getSigned()	const;
 	int	getSignRequired()	const;
 	int	getExecRequired()	const;
 	void	setName(std::string name);
+	void	setTarget(std::string target);
 	void	beSigned(const Bureaucrat& value);
 	bool	checkRequirement(const Bureaucrat &value) const;
 	virtual void	execute(const Bureaucrat & executor) const = 0;

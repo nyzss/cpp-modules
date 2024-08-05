@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:14:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 15:21:51 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 16:16:17 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ AForm::AForm(const AForm &value) : signRequired(value.signRequired), execRequire
 {
 	this->formSigned = value.formSigned;
 	this->formName = value.formName;
+	this->target = value.target;
 }
 
 AForm::~AForm()
@@ -96,6 +97,16 @@ bool	AForm::checkRequirement(const Bureaucrat &value) const
 	if (value.getGrade() > this->getExecRequired())
 		throw AForm::GradeTooLowException();
 	return true;
+}
+
+std::string	AForm::getTarget() const
+{
+	return this->target;
+}
+
+void	AForm::setTarget(std::string target)
+{
+	this->target = target;
 }
 
 std::ostream	&operator<<(std::ostream& stream, const AForm& value)
