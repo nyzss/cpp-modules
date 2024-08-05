@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 09:04:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 16:47:38 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 16:49:04 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main()
 			AForm *form	= intern.makeForm("shrubberry creation", "my home");
 
 			mo.signForm(*form);
+			mo.executeForm(*form);
 			AForm *invalid	= intern.makeForm("haha form", "lol");
 			mo.signForm(*invalid);
 		}
