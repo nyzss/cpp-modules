@@ -38,6 +38,6 @@ void	RobotomyRequestForm::execute(const Bureaucrat & executor) const
 	this->checkRequirement(executor);
 
 	std::cout << "Some drilling noise..." << std::endl;
-	const char	*robotomy = std::rand() % 2 == 0 ? "been robotomized" : " not been robotomized";
-	std::cout << executor.getName() << " has" << robotomy << std::endl;
+	const char	*robotomy = std::rand() % 2 == 0 ? "been robotomized" : "not been robotomized";
+	std::cout << executor.getName() << " has " << robotomy << std::endl;
 }

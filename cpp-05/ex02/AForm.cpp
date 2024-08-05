@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:14:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 14:16:29 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 15:21:51 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,10 @@ void	AForm::beSigned(const Bureaucrat& value)
 	if (this->signRequired < value.getGrade())
 	{
 		this->formSigned = false;
-		value.signForm(*this, this->formSigned);
 		throw AForm::GradeTooLowException();
 	}
 	else
-	{
 		this->formSigned = true;
-		value.signForm(*this, this->formSigned);
-	}
 }
 
 void	AForm::setName(std::string	name)

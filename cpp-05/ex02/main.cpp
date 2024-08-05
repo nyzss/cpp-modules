@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 09:04:54 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 14:59:25 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/05 15:29:39 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main()
 
 			ShrubberyCreationForm	form;
 			// form.execute(mike;
-			form.beSigned(mike);
+			mike.signForm(form);
 
 			form.execute(mike);
 		}
@@ -44,7 +44,7 @@ int	main()
 
 			RobotomyRequestForm	newForm;
 			// form.execute(mike;
-			newForm.beSigned(max);
+			max.signForm(newForm);
 
 			newForm.execute(max);
 		}
