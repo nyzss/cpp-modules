@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:42 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/06 15:38:49 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 16:38:57 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,93 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &value)
 	return *this;
 }
 
-void	ScalarConverter::specialDouble(std::string value)
+void	ScalarConverter::specialDecimal(std::string value)
 {
 	std::cout << value << std::endl;
+	Char("impossible");
+	Int("impossible");
+	if (value == "nanf" || value == "nan")
+	{
+		Float("nanf");
+		Double("nan");
+	}
+	else if (value == "-nanf" || value == "-nan")
+	{
+		Float("-nanf");
+		Double("-nan");
+	}
+	else if (value == "inff" || value == "inf")
+	{
+		Float("inff");
+		Double("inf");
+	}
+	else if (value == "-inff" || value == "-inf")
+	{
+		Float("-inff");
+		Double("-inf");
+	}
 }
 
-void	ScalarConverter::specialFloat(std::string value)
+int	ScalarConverter::isFloat(std::string value)
 {
-	std::cout << value << std::endl;
+	if (value.find(".") == std::string::npos)
+		return 0;
+	else if (value.find("f") == std::string::npos)
+		return 0;
+	return 1;
 }
 
-int	ScalarConverter::detectType(std::string value)
+int	ScalarConverter::checkValid(std::string value)
 {
-	if (value == "nan" || value == "-inf" || value == "inf")
-		ScalarConverter::specialDouble(value);
-	else if (value == "nanf" || value == "-inff" || value == "inff")
-		ScalarConverter::specialFloat(value);
+	size_t	counter;
+	for (int i = 0; i < value.length(); i++)
+	{
+		if (isalpha(value[i]))
+			counter++;
+		if (counter > 2)
+			return 1;
+	}
+	return (0);
+}
+
+void	ScalarConverter::Char(std::string value)
+{
+	std::cout << "char: " << value << std::endl;
+}
+
+void	ScalarConverter::Int(std::string value)
+{
+	std::cout << "int: " << value << std::endl;
+}
+
+void	ScalarConverter::Float(std::string value)
+{
+	std::cout << "float: " << value << std::endl;
+}
+
+void	ScalarConverter::Double(std::string value)
+{
+	std::cout << "double: " << value << std::endl;
+}
+
+void	ScalarConverter::nonValid()
+{
+	Char("invalid");
+	Int("invalid");
+	Float("invalid");
+	Double("invalid");
+}
+
+int	ScalarConverter::handle(std::string value)
+{
+	if (value == "nan" || value == "-nan" || value == "-inf" || value == "inf"
+		|| value == "nanf" || value == "-nanf" || value == "-inff" || value == "inff")
+		ScalarConverter::specialDecimal(value);
+	// else if (value == "nanf" || value == "-inff" || value == "inff")
+	else if (ScalarConverter::checkValid(value))
+		ScalarConverter::nonValid();
+	else if (ScalarConverter::isFloat(value))
+		ScalarConverter::doFloat(value);
 }
 
 void	ScalarConverter::convert(std::string value)
@@ -55,5 +126,5 @@ void	ScalarConverter::convert(std::string value)
 		value[i] = ::tolower(value[i]);
 	std::cout << value << std::endl;
 	std::cout << atof(value.c_str()) << std::endl;
-	ScalarConverter::detectType(value);
+	ScalarConverter::handle(value);
 }

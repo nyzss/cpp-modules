@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:23 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/06 15:38:13 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 16:33:08 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,16 @@ protected:
 
 public:
 	static void	convert(std::string value);
-	static void	specialDouble(std::string value);
-	static void	specialFloat(std::string value);
-	static int	detectType(std::string value);
+	static void	specialDecimal(std::string value);
+	static int	handle(std::string value);
+	static int	isFloat(std::string value);
+	static void	doFloat(std::string value);
+	static void	ScalarConverter::Char(std::string value);
+	static void	ScalarConverter::Int(std::string value);
+	static void	ScalarConverter::Float(std::string value);
+	static void	ScalarConverter::Double(std::string value);
+	static int	ScalarConverter::checkValid(std::string value);
+	static void	ScalarConverter::nonValid();
 	virtual ~ScalarConverter () = 0;
 };
 
