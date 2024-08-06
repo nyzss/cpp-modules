@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:13:58 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 16:19:13 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 08:30:49 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ private:
 	bool		formSigned;
 	const int	signRequired;
 	const int	execRequired;
-protected:
 	std::string	target;
 public:
 	AForm ();

@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 13:29:29 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 16:17:21 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 08:33:22 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shruberry Creation Form"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shruberry Creation Form", 145, 137)
 {
-	this->target = target;
+	this->setTarget(target);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &value) : AForm(value)
@@ -34,7 +34,7 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreation
 	if (this != &value)
 	{
 		this->setName(value.getName());
-		this->target = value.getTarget();
+		this->setTarget(value.getTarget());
 	}
 	return *this;
 }
@@ -42,7 +42,7 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreation
 void	ShrubberyCreationForm::execute(const Bureaucrat & executor) const
 {
 	this->checkRequirement(executor);
-	std::string	fileName = target;
+	std::string	fileName = this->getTarget();
 	fileName = fileName.append("_shrubbery");
 	std::ifstream ascii("tree.ascii");
 	if (!ascii)

@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:14:10 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/05 16:16:17 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 08:31:54 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ AForm::AForm() : signRequired(50), execRequired(100)
 
 AForm::AForm(const AForm &value) : signRequired(value.signRequired), execRequired(value.execRequired)
 {
-	this->formSigned = value.formSigned;
-	this->formName = value.formName;
-	this->target = value.target;
+	*this = value;
 }
 
 AForm::~AForm()
