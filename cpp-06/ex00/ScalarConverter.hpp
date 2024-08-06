@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:23 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/06 16:33:08 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 17:09:25 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,19 @@ protected:
 public:
 	static void	convert(std::string value);
 	static void	specialDecimal(std::string value);
-	static int	handle(std::string value);
+	static void	handle(std::string value);
 	static int	isFloat(std::string value);
 	static void	doFloat(std::string value);
-	static void	ScalarConverter::Char(std::string value);
-	static void	ScalarConverter::Int(std::string value);
-	static void	ScalarConverter::Float(std::string value);
-	static void	ScalarConverter::Double(std::string value);
-	static int	ScalarConverter::checkValid(std::string value);
-	static void	ScalarConverter::nonValid();
+	static void	Char(std::string value);
+	static void	Int(std::string value);
+	static void	Float(std::string value);
+	static void	Double(std::string value);
+	static void	Char(long long val);
+	static void	Int(long long val);
+	static void	Float(double val);
+	static void	Double(double val);
+	static int	checkValid(std::string value);
+	static void	nonValid();
 	virtual ~ScalarConverter () = 0;
 };
 

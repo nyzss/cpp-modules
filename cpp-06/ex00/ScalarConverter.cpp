@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:42 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/06 16:38:57 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/06 17:08:47 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,35 +69,23 @@ int	ScalarConverter::isFloat(std::string value)
 
 int	ScalarConverter::checkValid(std::string value)
 {
-	size_t	counter;
-	for (int i = 0; i < value.length(); i++)
+	int	counter = 0;
+	int	nonNumeric = 0;
+
+	for (size_t i = 0; i < value.length(); i++)
 	{
+		if (!isprint(value[i]))
+			return 1;
 		if (isalpha(value[i]))
 			counter++;
-		if (counter > 2)
-			return 1;
+		if (!isalnum(value[i]))
+			nonNumeric++;
 	}
+	if (counter > 1)
+		return 1;
+	else if (nonNumeric > 2)
+		return 1;
 	return (0);
-}
-
-void	ScalarConverter::Char(std::string value)
-{
-	std::cout << "char: " << value << std::endl;
-}
-
-void	ScalarConverter::Int(std::string value)
-{
-	std::cout << "int: " << value << std::endl;
-}
-
-void	ScalarConverter::Float(std::string value)
-{
-	std::cout << "float: " << value << std::endl;
-}
-
-void	ScalarConverter::Double(std::string value)
-{
-	std::cout << "double: " << value << std::endl;
 }
 
 void	ScalarConverter::nonValid()
@@ -108,12 +96,19 @@ void	ScalarConverter::nonValid()
 	Double("invalid");
 }
 
-int	ScalarConverter::handle(std::string value)
+void	ScalarConverter::doFloat(std::string value)
+{
+	float	val;
+
+	val = float(atof(value.c_str()));
+
+}
+
+void	ScalarConverter::handle(std::string value)
 {
 	if (value == "nan" || value == "-nan" || value == "-inf" || value == "inf"
 		|| value == "nanf" || value == "-nanf" || value == "-inff" || value == "inff")
 		ScalarConverter::specialDecimal(value);
-	// else if (value == "nanf" || value == "-inff" || value == "inff")
 	else if (ScalarConverter::checkValid(value))
 		ScalarConverter::nonValid();
 	else if (ScalarConverter::isFloat(value))
@@ -122,7 +117,7 @@ int	ScalarConverter::handle(std::string value)
 
 void	ScalarConverter::convert(std::string value)
 {
-	for (int i = 0; i < value.length(); i++)
+	for (size_t i = 0; i < value.length(); i++)
 		value[i] = ::tolower(value[i]);
 	std::cout << value << std::endl;
 	std::cout << atof(value.c_str()) << std::endl;
