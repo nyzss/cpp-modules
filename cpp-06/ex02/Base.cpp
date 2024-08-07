@@ -61,6 +61,7 @@ void Base::identify(Base& p)
 	{
 		A val = dynamic_cast<A&>(p);
 		std::cout << "REF: is class A" << std::endl;
+		return ;
 	}
 	catch(const std::exception& e) {}
 
