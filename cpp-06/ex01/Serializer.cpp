@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/07 16:12:12 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 16:12:12 by okoca            ###   ########.fr       */
+/*   Created: 2024/08/07 16:10:35 by okoca             #+#    #+#             */
+/*   Updated: 2024/08/07 16:10:35 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-int main()
+uintptr_t Serializer::serialize(Data* ptr)
 {
-	Data *data = new Data("Mo", 71237);
+	return reinterpret_cast<uintptr_t>(ptr);
+}
 
-	std::cout << data << std::endl;
-
-	delete data;
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data*>(raw);
 }

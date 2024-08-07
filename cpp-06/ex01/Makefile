@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/08/07 15:56:41 by okoca            ###   ########.fr        #
+#    Updated: 2024/08/07 16:28:48 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 DEP_FLAG = -MMD
 
-SRC_FILES = main.cpp
+SRC_FILES = main.cpp Serializer.cpp Data.cpp
 
 INCLUDES = ./
 
