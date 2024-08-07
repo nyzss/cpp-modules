@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:06:59 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 15:11:48 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:42:05 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void	ScalarConverter::Double(std::string value)
 
 void	ScalarConverter::Char(long long val)
 {
-	if (!isprint(val))
-		Char("non printable");
-	else if (val > std::numeric_limits<char>::max() || val < std::numeric_limits<char>::min())
+	if (val > std::numeric_limits<char>::max() || val < std::numeric_limits<char>::min())
 		Char("out of range");
+	else if (!isprint(val))
+		Char("non printable");
 	else
-		std::cout << "char: " << val << std::endl;
+	{
+		std::cout << "char: " << '\'' << char(val) << '\'' << std::endl;
+	}
 }
 
 void	ScalarConverter::Int(long long val)
@@ -60,7 +62,7 @@ void	ScalarConverter::Int(long long val)
 
 void	ScalarConverter::Float(double val)
 {
-	std::cout << "float: " << val << "f" << std::endl;
+	std::cout << "float: " << static_cast<float>(val) << "f" << std::endl;
 }
 
 void	ScalarConverter::Double(double val)

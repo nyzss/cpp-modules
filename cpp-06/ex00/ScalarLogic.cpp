@@ -17,10 +17,10 @@ void	ScalarConverter::doFloat(std::string value)
 	float	val;
 
 	val = float(atof(value.c_str()));
-	Char(val);
-	Int(val);
+	Char(static_cast<long long>(val));
+	Int(static_cast<long long>(val));
 	Float(val);
-	Double(val);
+	Double(static_cast<double>(val));
 }
 
 void	ScalarConverter::doDouble(std::string value)
@@ -28,9 +28,9 @@ void	ScalarConverter::doDouble(std::string value)
 	double	val;
 
 	val = double(atof(value.c_str()));
-	Char(val);
-	Int(val);
-	Float(val);
+	Char(static_cast<long long>(val));
+	Int(static_cast<long long>(val));
+	Float(static_cast<float>(val));
 	Double(val);
 }
 
@@ -41,6 +41,6 @@ void	ScalarConverter::doBasic(std::string value)
 	val = atoll(value.c_str());
 	Char(val);
 	Int(val);
-	Float(val);
-	Double(val);
+	Float(static_cast<float>(val));
+	Double(static_cast<double>(val));
 }

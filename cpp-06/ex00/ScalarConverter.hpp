@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:23 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 15:21:47 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:26:09 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <iomanip>
 #include <cstdlib>
 #include <cmath>
 
