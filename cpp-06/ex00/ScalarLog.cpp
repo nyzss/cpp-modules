@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:06:59 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 15:47:13 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:54:08 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ScalarConverter::nonValid()
 {
 	Char("invalid");
 	Int("invalid");
-	Float("invalid");
-	Double("invalid");
+	Float("nanf");
+	Double("nan");
 }
 
 void	ScalarConverter::Char(std::string value)
@@ -63,7 +63,7 @@ void	ScalarConverter::Int(long long val)
 void	ScalarConverter::Float(double val)
 {
 	std::cout << "float: " << val;
-	if (std::floor(val) == val)
+	if (std::floor(val) == val && std::isfinite(val))
 		std::cout << ".0";
 	std::cout << "f" << std::endl;
 }
@@ -71,7 +71,7 @@ void	ScalarConverter::Float(double val)
 void	ScalarConverter::Double(double val)
 {
 	std::cout << "double: " << val;
-	if (std::floor(val) == val)
+	if (std::floor(val) == val && std::isfinite(val))
 		std::cout << ".0";
 	std::cout << std::endl;
 }
