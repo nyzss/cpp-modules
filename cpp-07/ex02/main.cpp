@@ -14,7 +14,11 @@
 
 int main()
 {
-	Array<int>	arr;
+	Array<int>	arr(150);
 
-	std::cout << arr.size() << std::endl;
+	for (size_t i = 0; i < arr.size(); i++)
+		arr[i] = i * 1500;
+
+	std::cout << arr << std::endl;
+	// std::cout << arr.size() << std::endl;
 }

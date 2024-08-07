@@ -29,9 +29,15 @@ public:
 	{
 		this->data = new T[this->_size];
 	};
+	Array (size_t n) : _size(n)
+	{
+		this->data = new T[this->_size];
+	};
 	Array (const Array &value) : _size(value._size)
 	{
 		this->data = new T[this->_size];
+		for (size_t i = 0; i < this->_size; i++)
+			this->data[i] = value.data[i];
 	}
 	~Array ()
 	{
@@ -49,16 +55,37 @@ public:
 		}
 		return *this;
 	}
-	T& operator[](size_t index);
-	size_t	size() const
-	{
-		return this->_size;
-	}
 	class OutOfBoundsException : public std::exception
 	{
 		public:
 			const char *what() const throw() { return "Index is out of bounds!"; }
 	};
+	const T& operator[](size_t index) const
+	{
+		if (index >= this->_size)
+			throw OutOfBoundsException();
+		return this->data[index];
+	}
+	T& operator[](size_t index)
+	{
+		if (index >= this->_size)
+			throw OutOfBoundsException();
+		return this->data[index];
+	}
+	size_t	size() const
+	{
+		return this->_size;
+	}
 };
+
+template <typename T>
+std::ostream	&operator<<(std::ostream &stream, const Array<T> &arr)
+{
+	stream << "[";
+	for (size_t i = 0; i < arr.size(); i++)
+		stream << arr[i] << (i == arr.size() - 1 ? "" : ", ");
+	stream << "]";
+	return stream;
+}
 
 #endif /* ARRAY_HPP */
