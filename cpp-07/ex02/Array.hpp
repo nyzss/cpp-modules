@@ -22,20 +22,20 @@ class Array
 {
 private:
 	T		*data;
-	size_t	_size;
+	size_t _size;
 
 public:
 	Array () : _size(0)
 	{
-		this->data = new T[this->_size];
+		this->data = new T[this->_size]();
 	};
 	Array (size_t n) : _size(n)
 	{
-		this->data = new T[this->_size];
+		this->data = new T[this->_size]();
 	};
 	Array (const Array &value) : _size(value._size)
 	{
-		this->data = new T[this->_size];
+		this->data = new T[this->_size]();
 		for (size_t i = 0; i < this->_size; i++)
 			this->data[i] = value.data[i];
 	}
@@ -49,7 +49,7 @@ public:
 		{
 			delete[] this->data;
 			this->_size = value._size;
-			this->data = new T[this->_size];
+			this->data = new T[this->_size]();
 			for (size_t i = 0; i < this->_size; i++)
 				this->data[i] = value.data[i];
 		}
