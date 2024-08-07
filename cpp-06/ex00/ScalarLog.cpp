@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:06:59 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 15:42:05 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:47:13 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,16 @@ void	ScalarConverter::Int(long long val)
 
 void	ScalarConverter::Float(double val)
 {
-	std::cout << "float: " << static_cast<float>(val) << "f" << std::endl;
+	std::cout << "float: " << val;
+	if (std::floor(val) == val)
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
 }
 
 void	ScalarConverter::Double(double val)
 {
-	std::cout << "double: " << val << std::endl;
+	std::cout << "double: " << val;
+	if (std::floor(val) == val)
+		std::cout << ".0";
+	std::cout << std::endl;
 }
