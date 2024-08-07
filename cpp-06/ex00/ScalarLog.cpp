@@ -6,11 +6,19 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:06:59 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 14:22:06 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:11:48 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+void	ScalarConverter::nonValid()
+{
+	Char("invalid");
+	Int("invalid");
+	Float("invalid");
+	Double("invalid");
+}
 
 void	ScalarConverter::Char(std::string value)
 {
@@ -36,21 +44,23 @@ void	ScalarConverter::Char(long long val)
 {
 	if (!isprint(val))
 		Char("non printable");
-	else if (val >= std::numeric_limits<char>::max())
+	else if (val > std::numeric_limits<char>::max() || val < std::numeric_limits<char>::min())
 		Char("out of range");
-	std::cout << "char: " << val << std::endl;
+	else
+		std::cout << "char: " << val << std::endl;
 }
 
 void	ScalarConverter::Int(long long val)
 {
-	if (val >= std::numeric_limits<char>::max())
+	if (val > std::numeric_limits<int>::max() || val < std::numeric_limits<int>::min())
 		Int("out of range");
-	std::cout << "int: " << val << std::endl;
+	else
+		std::cout << "int: " << val << std::endl;
 }
 
 void	ScalarConverter::Float(double val)
 {
-	std::cout << "float: " << val << std::endl;
+	std::cout << "float: " << val << "f" << std::endl;
 }
 
 void	ScalarConverter::Double(double val)

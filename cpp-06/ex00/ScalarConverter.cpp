@@ -33,7 +33,6 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &value)
 
 void	ScalarConverter::specialDecimal(std::string value)
 {
-	std::cout << value << std::endl;
 	Char("impossible");
 	Int("impossible");
 	if (value == "nanf" || value == "nan")
@@ -88,22 +87,6 @@ int	ScalarConverter::checkValid(std::string value)
 	return (0);
 }
 
-void	ScalarConverter::nonValid()
-{
-	Char("invalid");
-	Int("invalid");
-	Float("invalid");
-	Double("invalid");
-}
-
-void	ScalarConverter::doFloat(std::string value)
-{
-	float	val;
-
-	val = float(atof(value.c_str()));
-
-}
-
 void	ScalarConverter::handle(std::string value)
 {
 	if (value == "nan" || value == "-nan" || value == "-inf" || value == "inf"
@@ -119,7 +102,7 @@ void	ScalarConverter::convert(std::string value)
 {
 	for (size_t i = 0; i < value.length(); i++)
 		value[i] = ::tolower(value[i]);
-	std::cout << value << std::endl;
-	std::cout << atof(value.c_str()) << std::endl;
+	// std::cout << value << std::endl;
+	// std::cout << atof(value.c_str()) << std::endl;
 	ScalarConverter::handle(value);
 }
