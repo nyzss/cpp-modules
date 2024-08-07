@@ -20,19 +20,20 @@ Base * Base::generate(void)
 	int	rnd = std::rand() % 3;
 	Base* item;
 
+	std::cout << "RND: generated ";
 	if (rnd == 0)
 	{
-		std::cout << "RND: A class" << std::endl;
+		std::cout << "A class" << std::endl;
 		item = new A();
 	}
 	else if (rnd == 1)
 	{
-		std::cout << "RND: B class" << std::endl;
+		std::cout << "B class" << std::endl;
 		item = new B();
 	}
 	else
 	{
-		std::cout << "RND: C class" << std::endl;
+		std::cout << "C class" << std::endl;
 		item = new C();
 	}
 	return item;
@@ -45,18 +46,39 @@ void Base::identify(Base* p)
 	// C *c;
 
 	if ((val = dynamic_cast<A*>(p)))
-		std::cout << "this is A" << std::endl;
+		std::cout << "PTR: is class A" << std::endl;
 	else if ((val = dynamic_cast<B*>(p)))
-		std::cout << "this is B" << std::endl;
+		std::cout << "PTR: is class B" << std::endl;
 	else if ((val = dynamic_cast<C*>(p)))
-		std::cout << "this is C" << std::endl;
+		std::cout << "PTR: is class C" << std::endl;
 	else
 		std::cout << "uh oh small issue" << std::endl;
 }
 
 void Base::identify(Base& p)
 {
-	(void)p;
+	try
+	{
+		A val = dynamic_cast<A&>(p);
+		std::cout << "REF: is class A" << std::endl;
+	}
+	catch(const std::exception& e) {}
+
+	try
+	{
+		B val = dynamic_cast<B&>(p);
+		std::cout << "REF: is class B" << std::endl;
+		return ;
+	}
+	catch(const std::exception& e) {}
+
+	try
+	{
+		C val = dynamic_cast<C&>(p);
+		std::cout << "REF: is class C" << std::endl;
+		return ;
+	}
+	catch(const std::exception& e) {}
 }
 
 Base::Base()

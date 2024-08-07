@@ -19,10 +19,10 @@
 class C : public Base
 {
 private:
-	C (const C &value);
-	C & operator=(const C &value);
 public:
 	C ();
+	C (const C &value);
+	C & operator=(const C &value);
 	~C ();
 };
 

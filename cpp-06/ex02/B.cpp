@@ -18,7 +18,7 @@ B::B()
 
 B::B(const B &value) : Base()
 {
-	*this = value;
+	(void) value;
 }
 
 B::~B()
@@ -27,7 +27,6 @@ B::~B()
 
 B & B::operator=(const B &value)
 {
-	if (this != &value)
-		*this = value;
+	(void) value;
 	return *this;
 }

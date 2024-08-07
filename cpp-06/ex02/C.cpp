@@ -18,7 +18,7 @@ C::C()
 
 C::C(const C &value) : Base()
 {
-	*this = value;
+	(void) value;
 }
 
 C::~C()
@@ -27,7 +27,6 @@ C::~C()
 
 C & C::operator=(const C &value)
 {
-	if (this != &value)
-		*this = value;
+	(void) value;
 	return *this;
 }

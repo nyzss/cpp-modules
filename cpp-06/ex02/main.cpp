@@ -22,6 +22,7 @@ int main()
 	Base *rnd = Base::generate();
 
 	Base::identify(rnd);
+	Base::identify(*rnd);
 
 	delete rnd;
 }

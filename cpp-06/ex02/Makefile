@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/08/07 19:36:48 by okoca            ###   ########.fr        #
+#    Updated: 2024/08/07 20:14:15 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_FILES = main.cpp Base.cpp A.cpp B.cpp C.cpp
 
 INCLUDES = ./
 
-NAME = serial
+NAME = dynamic
 
 OBJS = ${SRC_FILES:.cpp=.o}
 
