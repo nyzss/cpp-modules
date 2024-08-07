@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:23 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 15:26:09 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:55:14 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ enum Types
 class ScalarConverter
 {
 private:
-protected:
 	ScalarConverter ();
 	ScalarConverter (const ScalarConverter &value);
 	ScalarConverter & operator=(const ScalarConverter &value);
