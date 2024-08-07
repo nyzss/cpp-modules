@@ -14,9 +14,13 @@
 
 int main()
 {
-	Data *data = new Data("Mo", 71237);
+	Data data("Mo", 71237);
 
-	std::cout << data << std::endl;
+	std::cout << &data << ": " << data << std::endl;
 
-	delete data;
+	uintptr_t val = Serializer::serialize(&data);
+
+	Data *cpy = Serializer::deserialize(val);
+
+	std::cout << cpy << ": " << *cpy << std::endl;
 }
