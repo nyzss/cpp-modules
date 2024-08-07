@@ -34,6 +34,23 @@ void	ScalarConverter::doDouble(std::string value)
 	Double(val);
 }
 
+void	ScalarConverter::doChar(std::string value)
+{
+	long long	val;
+
+	for (size_t i = 0; i < value.length(); i++)
+	{
+		if (isprint(value[i]))
+			val = value[i];
+	}
+	if (value[0] == '-')
+		val *= -1;
+	Char(val);
+	Int(val);
+	Float(static_cast<float>(val));
+	Double(static_cast<double>(val));
+}
+
 void	ScalarConverter::doBasic(std::string value)
 {
 	long long	val;

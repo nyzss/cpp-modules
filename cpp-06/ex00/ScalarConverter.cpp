@@ -45,6 +45,20 @@ int	ScalarConverter::isFloat(std::string value)
 	return 1;
 }
 
+int	ScalarConverter::isChar(std::string value)
+{
+	if (value.length() > 2)
+		return (0);
+	if (value.length() == 2)
+	{
+		if (value[0] != '-' || !isprint(value[1]))
+			return (0);
+	}
+	else if (value.length() == 1 && !isprint(value[0]))
+		return (0);
+	return 1;
+}
+
 int	ScalarConverter::isDouble(std::string value)
 {
 	if (value.find(".") == std::string::npos)
@@ -78,6 +92,8 @@ void	ScalarConverter::handle(std::string value)
 	if (value == "nan" || value == "-nan" || value == "-inf" || value == "inf"
 		|| value == "nanf" || value == "-nanf" || value == "-inff" || value == "inff")
 		ScalarConverter::specialDecimal(value);
+	else if (ScalarConverter::isChar(value))
+		ScalarConverter::doChar(value);
 	else if (ScalarConverter::checkValid(value))
 		ScalarConverter::nonValid();
 	else if (ScalarConverter::isFloat(value))
