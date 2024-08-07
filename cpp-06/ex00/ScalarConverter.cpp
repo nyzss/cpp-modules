@@ -12,25 +12,6 @@
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter()
-{
-}
-
-ScalarConverter::ScalarConverter(const ScalarConverter &value)
-{
-	(void)value;
-}
-
-ScalarConverter::~ScalarConverter()
-{
-}
-
-ScalarConverter & ScalarConverter::operator=(const ScalarConverter &value)
-{
-	(void)value;
-	return *this;
-}
-
 void	ScalarConverter::specialDecimal(std::string value)
 {
 	Char("impossible");
@@ -59,11 +40,16 @@ void	ScalarConverter::specialDecimal(std::string value)
 
 int	ScalarConverter::isFloat(std::string value)
 {
-	if (value.find(".") == std::string::npos)
-		return 0;
-	else if (value.find("f") == std::string::npos)
+	if (value.rbegin()[0] == 'f')
 		return 0;
 	return 1;
+}
+
+int	ScalarConverter::isDouble(std::string value)
+{
+	if (value.find(".") == std::string::npos)
+		return 0;
+	return (1);
 }
 
 int	ScalarConverter::checkValid(std::string value)
@@ -96,13 +82,35 @@ void	ScalarConverter::handle(std::string value)
 		ScalarConverter::nonValid();
 	else if (ScalarConverter::isFloat(value))
 		ScalarConverter::doFloat(value);
+	else if (ScalarConverter::isDouble(value))
+		ScalarConverter::doDouble(value);
+	else
+		ScalarConverter::doBasic(value);
 }
 
 void	ScalarConverter::convert(std::string value)
 {
 	for (size_t i = 0; i < value.length(); i++)
 		value[i] = ::tolower(value[i]);
-	// std::cout << value << std::endl;
-	// std::cout << atof(value.c_str()) << std::endl;
 	ScalarConverter::handle(value);
 }
+
+ScalarConverter::ScalarConverter()
+{
+}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &value)
+{
+	(void)value;
+}
+
+ScalarConverter::~ScalarConverter()
+{
+}
+
+ScalarConverter & ScalarConverter::operator=(const ScalarConverter &value)
+{
+	(void)value;
+	return *this;
+}
+

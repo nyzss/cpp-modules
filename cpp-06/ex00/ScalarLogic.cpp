@@ -22,3 +22,25 @@ void	ScalarConverter::doFloat(std::string value)
 	Float(val);
 	Double(val);
 }
+
+void	ScalarConverter::doDouble(std::string value)
+{
+	double	val;
+
+	val = double(atof(value.c_str()));
+	Char(val);
+	Int(val);
+	Float(val);
+	Double(val);
+}
+
+void	ScalarConverter::doBasic(std::string value)
+{
+	long long	val;
+
+	val = atoll(value.c_str());
+	Char(val);
+	Int(val);
+	Float(val);
+	Double(val);
+}

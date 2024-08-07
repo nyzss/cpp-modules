@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:48:23 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 14:16:32 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/07 15:21:47 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ protected:
 	static void	specialDecimal(std::string value);
 	static void	handle(std::string value);
 	static int	isFloat(std::string value);
+	static int	isDouble(std::string value);
 	static void	doFloat(std::string value);
+	static void	doDouble(std::string value);
+	static void	doBasic(std::string value);
 	static void	Char(std::string value);
 	static void	Int(std::string value);
 	static void	Float(std::string value);
