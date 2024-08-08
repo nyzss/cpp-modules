@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:06 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 11:40:38 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 13:04:52 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@
 #include <iostream>
 #include <stdint.h>
 #include <cstring>
+#include <algorithm>
+#include <set>
 
 class Span
 {
 private:
-	const uint32_t	_size;
-	uint32_t		_last;
-	int				*arr;
+	uint32_t	_size;
+
 	Span ();
 	void	validate(uint32_t n) const;
 public:
-	Span (const unsigned int &n);
+	std::set<int>	set;
+	Span (uint32_t n);
 	Span (const Span &value);
 	~Span ();
 	Span & operator=(const Span &value);
@@ -35,6 +37,8 @@ public:
 	void	empty();
 	size_t	size() const;
 	size_t	maxSize() const;
+ 	// uint32_t shortestSpan() const;
+ 	// uint32_t longestSpan() const;
 	const int& operator[](uint32_t idx) const;
 };
 

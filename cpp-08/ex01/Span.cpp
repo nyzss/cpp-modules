@@ -6,54 +6,49 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:15 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 11:41:44 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 13:29:16 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span() : _size(0), _last(0)
+Span::Span() : _size(0)
 {
-	this->arr = new int[this->_size]();
 }
 
-Span::Span(const unsigned int& size) : _size(size), _last(0)
+Span::Span(uint32_t size) : _size(size)
 {
-	this->arr = new int[this->_size]();
 }
 
-Span::Span(const Span &value) : _size(value._size), _last(0)
+Span::Span(const Span &value) : _size(value._size)
 {
-	this->arr = new int[this->_size]();
-	for (size_t i = 0; i < this->_size; i++)
-		this->addNumber(value.arr[i]);
+	this->_size = value._size;
+	this->set = value.set;
 }
 
 Span::~Span()
 {
-	delete[] this->arr;
 }
 
 void Span::validate(uint32_t n) const
 {
-	if (n >= this->_last)
+	if (n >= this->set.size())
 		throw std::out_of_range("Out of range!");
 }
 
 Span & Span::operator=(const Span &value)
 {
-	if (this != &value && value.arr)
+	if (this != &value)
 	{
-		this->empty();
-		for (size_t i = 0; i < this->_size && i < value._size; i++)
-			this->arr[i] = value.arr[i];
+		this->_size = value._size;
+		this->set = value.set;
 	}
 	return *this;
 }
 
 size_t	Span::size() const
 {
-	return this->_last;
+	return this->set.size();
 }
 
 size_t	Span::maxSize() const
@@ -63,16 +58,23 @@ size_t	Span::maxSize() const
 
 void	Span::addNumber(const int &val)
 {
-	if (this->_last >= this->_size)
-		throw std::out_of_range("Out of range!");
-	this->arr[this->_last] = val;
-	this->_last++;
+	if (this->set.size() >= this->_size)
+		throw std::out_of_range("throws here");
+	this->set.insert(val);
 }
 
 const int &Span::operator[](uint32_t idx) const
 {
 	this->validate(idx);
-	return this->arr[idx];
+	std::set<int>::iterator it;
+
+	for (it = this->set.begin(); it != this->set.end(); it++)
+	{
+		// std::cout << "IT: " << *it << std::endl;
+		if (std::distance(this->set.begin(), it) == idx)
+			return *it;
+	}
+	throw std::out_of_range("Out of range [index]");
 }
 
 std::ostream	&operator<<(std::ostream &s, const Span &sp)
@@ -86,12 +88,19 @@ std::ostream	&operator<<(std::ostream &s, const Span &sp)
 	return s;
 }
 
+// uint32_t Span::shortestSpan() const
+// {
+// 	for (size_t i = 0; i < this->_last; i++)
+// 	{
+// 	}
+// }
+
+// uint32_t Span::longestSpan() const
+// {
+
+// }
+
 void	Span::empty()
 {
-	std::memset(this->arr, 0, this->_size * sizeof(int));
-	// long long	*arr = reinterpret_cast<long long*>(this->arr);
-	// for (size_t i = 0; i < _size / 2; i++)
-	// {
-	// 	arr[i] = 0;
-	// }
+	this->set.empty();
 }
