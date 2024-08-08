@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:06 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 13:04:52 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 13:56:15 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ private:
 
 	Span ();
 	void	validate(uint32_t n) const;
+	void	validate() const;
 public:
 	std::set<int>	set;
 	Span (uint32_t n);
@@ -37,8 +38,8 @@ public:
 	void	empty();
 	size_t	size() const;
 	size_t	maxSize() const;
- 	// uint32_t shortestSpan() const;
- 	// uint32_t longestSpan() const;
+ 	uint32_t shortestSpan() const;
+ 	uint32_t longestSpan() const;
 	const int& operator[](uint32_t idx) const;
 };
 
