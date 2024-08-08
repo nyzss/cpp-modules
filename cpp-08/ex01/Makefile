@@ -6,7 +6,7 @@
 #    By: okoca <okoca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:43:34 by okoca             #+#    #+#              #
-#    Updated: 2024/08/08 10:54:04 by okoca            ###   ########.fr        #
+#    Updated: 2024/08/08 11:12:47 by okoca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_FILES = main.cpp Span.cpp
 
 INCLUDES = ./
 
-NAME = easyfind
+NAME = span
 
 OBJS = ${SRC_FILES:.cpp=.o}
 

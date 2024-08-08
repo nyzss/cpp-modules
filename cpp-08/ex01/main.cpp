@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:40:31 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 10:53:12 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 11:37:08 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int main()
 	sp.addNumber(17);
 	sp.addNumber(9);
 	sp.addNumber(11);
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
+	std::cout << sp << std::endl;
+	// std::cout << sp.shortestSpan() << std::endl;
+	// std::cout << sp.longestSpan() << std::endl;
 	return 0;
 }
