@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:40:31 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 14:44:06 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 16:03:24 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int main()
 {
+	std::srand(time(NULL));
 	Span sp = Span(5);
 
 	try
@@ -34,5 +35,19 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	try
+	{
+		Span newSp = Span(150000);
+
+		newSp.more(150000);
+		std::cout << newSp.shortestSpan() << std::endl;
+		std::cout << newSp.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	return 0;
 }

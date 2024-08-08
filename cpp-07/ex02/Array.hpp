@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 21:26:00 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/07 21:26:00 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 14:24:00 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 template <typename T>
 class Array

@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:15 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 13:56:03 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 16:03:21 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,25 @@ size_t	Span::maxSize() const
 	return this->_size;
 }
 
+/*
+	Adds `n` number of element to Span (will fill out the set)
+*/
+void	Span::more(uint32_t n)
+{
+	if (this->set.size() >= this->_size)
+		throw std::out_of_range("no enough space");
+	for (size_t i = 0; i < this->_size && i < n; i++)
+	{
+		if (this->set.size() >= this->_size)
+			break ;
+		this->set.insert(std::rand());
+	}
+}
+
 void	Span::addNumber(const int &val)
 {
 	if (this->set.size() >= this->_size)
-		throw std::out_of_range("throws here");
+		throw std::out_of_range("Trying to add more more than maxSize.");
 	this->set.insert(val);
 }
 
@@ -110,24 +125,33 @@ uint32_t Span::shortestSpan() const
 	uint32_t	span;
 	uint32_t	smallestSpan;
 
+	uint32_t	s;
+	uint32_t	p;
+
 	last = *this->set.begin();
 	smallestSpan = this->longestSpan();
 	for (it = ++this->set.begin(); it != this->set.end(); it++)
 	{
 		span = *it - last;
 		if (span < smallestSpan)
+		{
+			s = *it;
+			p = last;
 			smallestSpan = span;
+		}
 		last = *it;
 	}
+	std::cout << "shortestSpan s: " << s << " - p: " << p << std::endl;
 	return smallestSpan;
-	// std::cout << "HERE: " << *this->set.begin() << std::endl;
-	// return *++this->set.begin() - *this->set.begin();
 }
 
 uint32_t Span::longestSpan() const
 {
 	this->validate();
-	return *this->set.rbegin() - *this->set.begin();
+	uint32_t	s = *this->set.rbegin();
+	uint32_t	p = *this->set.begin();
+	std::cout << "longestSpan s: " << s << " - p: " << p << std::endl;
+	return s - p;
 }
 
 void	Span::empty()

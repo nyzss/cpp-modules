@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:06 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 13:56:15 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 16:00:40 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	~Span ();
 	Span & operator=(const Span &value);
 	void	addNumber(const int &val);
+	void	more(uint32_t n);
 	void	empty();
 	size_t	size() const;
 	size_t	maxSize() const;
