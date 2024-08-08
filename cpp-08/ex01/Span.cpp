@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:15 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 11:36:48 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 11:41:44 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ Span::~Span()
 	delete[] this->arr;
 }
 
+void Span::validate(uint32_t n) const
+{
+	if (n >= this->_last)
+		throw std::out_of_range("Out of range!");
+}
+
 Span & Span::operator=(const Span &value)
 {
 	if (this != &value && value.arr)
@@ -43,16 +49,6 @@ Span & Span::operator=(const Span &value)
 			this->arr[i] = value.arr[i];
 	}
 	return *this;
-}
-
-void	Span::empty()
-{
-	std::memset(this->arr, 0, this->_size * sizeof(int));
-	// long long	*arr = reinterpret_cast<long long*>(this->arr);
-	// for (size_t i = 0; i < _size / 2; i++)
-	// {
-	// 	arr[i] = 0;
-	// }
 }
 
 size_t	Span::size() const
@@ -75,8 +71,7 @@ void	Span::addNumber(const int &val)
 
 const int &Span::operator[](uint32_t idx) const
 {
-	if (idx >= this->_last)
-		throw std::out_of_range("Out of range!");
+	this->validate(idx);
 	return this->arr[idx];
 }
 
@@ -89,4 +84,14 @@ std::ostream	&operator<<(std::ostream &s, const Span &sp)
 	}
 	s << "]";
 	return s;
+}
+
+void	Span::empty()
+{
+	std::memset(this->arr, 0, this->_size * sizeof(int));
+	// long long	*arr = reinterpret_cast<long long*>(this->arr);
+	// for (size_t i = 0; i < _size / 2; i++)
+	// {
+	// 	arr[i] = 0;
+	// }
 }

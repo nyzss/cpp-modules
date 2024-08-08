@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:44:06 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 11:36:38 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 11:40:38 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ private:
 	uint32_t		_last;
 	int				*arr;
 	Span ();
+	void	validate(uint32_t n) const;
 public:
 	Span (const unsigned int &n);
 	Span (const Span &value);
