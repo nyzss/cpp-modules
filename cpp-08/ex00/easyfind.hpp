@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:52:41 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 09:07:23 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/08 09:15:09 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	&easyfind(T& container, int number)
 		if (container[i] == number)
 			return container[i];
 	}
-	throw std::runtime_error("Couldn't find value.");
+	// decided to throw error since we return an integer,
+	// and if the value that is searched is is the INT_MAX
+	// we wouldnt have a way to check if value is found/or not.
+	throw std::logic_error("Couldn't find value.");
 }
 
 #endif /* EASYFIND_HPP */
