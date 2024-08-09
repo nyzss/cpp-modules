@@ -24,6 +24,7 @@
 #include <map>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 
 class BitcoinExchange
 {
