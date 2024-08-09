@@ -26,8 +26,8 @@ int main()
 		std::cout <<  "-----------" << std::endl;
 		std::cout << be.find("2023-03-30") << std::endl;
 		std::cout <<  "-----------" << std::endl;
-		std::cout << be.find("2009-01-01") << std::endl;
-		// std::cout << be.find("4234") << std::endl;
+		// std::cout << be.find("2009-01-01") << std::endl;
+		std::cout << be.find("4234") << std::endl;
 	}
 	catch(const std::out_of_range& e)
 	{

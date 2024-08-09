@@ -14,6 +14,8 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# define DATE_LEN 10
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -34,6 +36,7 @@ public:
 	BitcoinExchange (const BitcoinExchange &value);
 	~BitcoinExchange ();
 	BitcoinExchange & operator=(const BitcoinExchange &value);
+	static void	validate_date(std::string date);
 	float	find(std::string date) const;
 };
 

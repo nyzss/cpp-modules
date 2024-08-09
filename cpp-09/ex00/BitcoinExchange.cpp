@@ -29,15 +29,30 @@ BitcoinExchange::BitcoinExchange(std::string path)
 	input.close();
 }
 
+void	BitcoinExchange::validate_date(std::string date)
+{
+	if (date.length() != DATE_LEN)
+		throw std::logic_error("Invalid date");
+	std::string::iterator	it;
+	for (it = date.begin(); it != date.end(); it++)
+	{
+		if (std::isalpha(*it))
+			throw std::logic_error("Invalid date");
+	}
+}
+
 float	BitcoinExchange::find(std::string date) const
 {
-	std::map<std::string, float, std::greater<std::string> >::const_iterator it;
+	BitcoinExchange::validate_date(date);
 
+	std::map<std::string, float, std::greater<std::string> >::const_iterator it;
 	it = this->data.lower_bound(date);
+
 	if (it == this->data.end() && this->data.end()->first != date)
 		throw std::runtime_error("no such date is found.");
-	std::cout << "date:\t     " << date << std::endl;
-	std::cout << "lower_bound: " << it->first << std::endl;
+
+	// std::cout << "date:\t     " << date << std::endl;
+	// std::cout << "lower_bound: " << it->first << std::endl;
 	return it->second;
 }
 
