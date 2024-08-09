@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:05:49 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 16:30:53 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/09 10:29:29 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,25 @@
 #include <string>
 #include <vector>
 
+#include <MutantStack.hpp>
+
 int main()
 {
-	std::vector<int> vec;
+	Stack	st;
+	st.push(284);
+	st.push(19);
+	st.push(100);
 
-	vec.begin();
+	// std::stack<int> stack;
+
+	// stack.c.
+
+	Stack::iterator it;
+	std::cout << *it << std::endl;
+	// std::vector<int> vec;
+
+	// vec.begin();
+	// vec.end();
 
 	// std::vector<int>::iterator it;
 }
