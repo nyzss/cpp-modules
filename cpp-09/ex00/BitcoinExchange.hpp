@@ -20,6 +20,7 @@
 #include <string>
 #include <map>
 #include <cstdlib>
+#include <cstring>
 #include <ctime>
 
 class BitcoinExchange
@@ -35,7 +36,6 @@ public:
 	~BitcoinExchange ();
 	BitcoinExchange & operator=(const BitcoinExchange &value);
 	float	find(std::string date) const;
-	time_t	convert(const std::string& date) const;
 };
 
 #endif /* BITCOINEXCHANGE_HPP */
