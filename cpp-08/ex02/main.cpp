@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:05:49 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/09 13:34:47 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/09 13:45:07 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ int main()
 			++it;
 		}
 		MutantStack<int> s(mstack);
+		MutantStack<int>::iterator sIter;
+
+		for (sIter = s.begin(); sIter != s.end(); sIter++)
+			*sIter += 150;
+		{
+			std::cout << "[";
+			for (sIter = s.begin(); sIter != s.end(); sIter++)
+			{
+					std::cout << *sIter;
+					if (sIter != --s.end())
+						std::cout << ", ";
+			}
+			std::cout << "]" << std::endl;
+		}
 	}
 
 	std::cout << "--------- LIST --------" << std::endl;
@@ -82,5 +96,19 @@ int main()
 			++it;
 		}
 		std::list<int> s(mstack);
+		std::list<int>::iterator sIter;
+
+		for (sIter = s.begin(); sIter != s.end(); sIter++)
+			*sIter += 150;
+		{
+			std::cout << "[";
+			for (sIter = s.begin(); sIter != s.end(); sIter++)
+			{
+					std::cout << *sIter;
+					if (sIter != --s.end())
+						std::cout << ", ";
+			}
+			std::cout << "]" << std::endl;
+		}
 	}
 }
