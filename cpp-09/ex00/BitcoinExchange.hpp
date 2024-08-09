@@ -20,13 +20,12 @@
 #include <string>
 #include <map>
 #include <cstdlib>
-#include <cstring>
 #include <ctime>
 
 class BitcoinExchange
 {
 private:
-	std::map<std::string, float> data;
+	std::map<std::string, float, std::greater<std::string> > data;
 	BitcoinExchange () {};
 public:
 	typedef std::map<std::string, float>::iterator iterator;

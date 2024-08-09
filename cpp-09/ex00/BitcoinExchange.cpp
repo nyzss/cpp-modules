@@ -31,7 +31,14 @@ BitcoinExchange::BitcoinExchange(std::string path)
 
 float	BitcoinExchange::find(std::string date) const
 {
-	return this->data.at(date);
+	std::map<std::string, float, std::greater<std::string> >::const_iterator it;
+
+	it = this->data.lower_bound(date);
+	if (it == this->data.end() && this->data.end()->first != date)
+		throw std::runtime_error("no such date is found.");
+	std::cout << "date:\t     " << date << std::endl;
+	std::cout << "lower_bound: " << it->first << std::endl;
+	return it->second;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &val)
