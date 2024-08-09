@@ -14,33 +14,41 @@
 #include <string>
 #include <BitcoinExchange.hpp>
 
+void	err(const char *s)
+{
+	std::cerr << s << std::endl;
+	exit (1);
+}
+
 int main(int ac, char **av)
 {
 	if (ac != 2)
-	{
-		std::cerr << "This program takes an input file to check with our database." << std::endl;
-		return 1;
-	}
-	std::cout << av[1] << std::endl;
+		err("This program takes an input file to check with our database.");
+	std::ifstream	s(av[1]);
+	if (!s)
+		err("Please pass in a valid file.");
 	try
 	{
 		BitcoinExchange	be("data.csv");
 
-		// std::cout << BitcoinExchange::get_pair()
-		std::cout << "pair first: " << be.get_pair("2021-06-05 | 246.8").first << std::endl;
-		std::cout << "pair second: " << be.get_pair("2021-06-05 | 246.8").second << std::endl;
-		// std::cout << be.find("2022-02-05") << std::endl;
-		// std::cout <<  "-----------" << std::endl;
-		// std::cout << be.find("2012-07-15") << std::endl;
-		// std::cout <<  "-----------" << std::endl;
-		// std::cout << be.find("2023-03-30") << std::endl;
-		// std::cout <<  "-----------" << std::endl;
-		// // std::cout << be.find("2009-01-01") << std::endl;
-		// std::cout << be.find("4234") << std::endl;
-	}
-	catch(const std::out_of_range& e)
-	{
-		std::cerr << "Not a valid date. " << e.what() << '\n';
+		std::string	line;
+		while (std::getline(s, line))
+		{
+			if (line == "date | value")
+				continue ;
+			BitcoinExchange::pair pair;
+
+			try
+			{
+				pair = be.get_pair(line);
+				std::cout << "pair first: " << pair.first;
+				std::cout << " :: " << pair.second << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
 	}
 	catch(const std::exception& e)
 	{

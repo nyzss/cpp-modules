@@ -26,7 +26,6 @@ BitcoinExchange::BitcoinExchange(std::string path)
 		double	s = std::atof(rest.c_str());
 		this->data.insert(std::make_pair(f, s));
 	}
-	input.close();
 }
 
 std::string	BitcoinExchange::get_date(std::string raw)
