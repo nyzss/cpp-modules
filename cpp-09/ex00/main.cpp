@@ -41,8 +41,9 @@ int main(int ac, char **av)
 			try
 			{
 				pair = be.get_pair(line);
-				std::cout << "pair first: " << pair.first;
-				std::cout << " :: " << pair.second << std::endl;
+				std::cout << pair.first;
+				std::cout << " => " << pair.second;
+				std::cout << " = " << (pair.second * be.find(pair.first)) << "(" << be.find(pair.first) << ")" << std::endl;
 			}
 			catch(const std::exception& e)
 			{

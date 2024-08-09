@@ -46,6 +46,8 @@ double	BitcoinExchange::get_value(std::string raw)
 
 	std::string	f = raw.substr(v + 1);
 	double	val = std::strtod(f.c_str(), NULL);
+	if (val < 0 || val > 1000)
+		throw std::logic_error("invalid number");
 	return val;
 }
 
