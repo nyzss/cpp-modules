@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:48:12 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/08 10:39:05 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/09 14:10:42 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int main(int ac, char **av)
 
 	try
 	{
-		std::map<std::string, int> map;
-		map["hello"] = 10;
-		map["wow"] = 5;
-		map["haha"] = 2;
-		map["cool"] = 25;
-		map["hello world!"] = 89123;
-		map["haha another element"] = 79;
-		std::cout << easyfind_map(map, find) << std::endl;
+		std::map<int, std::string> map;
+		map[1] = "hello";
+		map[2] = "wow";
+		map[3] = "haha";
+		map[4] = "cool";
+		map[5] = "hello world!";
+		map[6] = "haha another element";
+		std::cout << easyfind_m(map, find) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
