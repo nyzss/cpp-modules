@@ -29,6 +29,28 @@ BitcoinExchange::BitcoinExchange(std::string path)
 	input.close();
 }
 
+std::string	BitcoinExchange::get_date(std::string raw)
+{
+	size_t		v;
+	std::string	f;
+
+	if (raw.length() < MIN_RAW_ROW)
+		throw std::logic_error("Invalid line");
+	std::string::const_iterator	it;
+	for (it = raw.begin(); it != raw.end(); it++)
+	{
+		if (std::isalpha(*it))
+		throw std::logic_error("Invalid line");
+	}
+	if ((v = raw.find('|')) != std::string::npos)
+	{
+		f = raw.substr(0, v - 1);
+	}
+	BitcoinExchange::validate_date(f);
+	return f;
+}
+
+
 void	BitcoinExchange::validate_date(std::string date)
 {
 	if (date.length() != DATE_LEN)

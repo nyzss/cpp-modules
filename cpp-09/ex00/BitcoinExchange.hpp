@@ -15,6 +15,7 @@
 # define BITCOINEXCHANGE_HPP
 
 # define DATE_LEN 10
+# define MIN_RAW_ROW 14
 
 #include <iostream>
 #include <fstream>
@@ -38,6 +39,7 @@ public:
 	BitcoinExchange & operator=(const BitcoinExchange &value);
 	static void	validate_date(std::string date);
 	float	find(std::string date) const;
+	static std::string	get_date(std::string raw);
 };
 
 #endif /* BITCOINEXCHANGE_HPP */
