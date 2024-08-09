@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:34:28 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/09 15:10:59 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/09 15:50:23 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <string>
 #include <map>
 #include <cstdlib>
+#include <ctime>
 
 class BitcoinExchange
 {
@@ -27,10 +28,14 @@ private:
 	std::map<std::string, float> data;
 	BitcoinExchange () {};
 public:
+	typedef std::map<std::string, float>::iterator iterator;
+	typedef std::map<std::string, float>::const_iterator const_iterator;
 	BitcoinExchange (std::string path);
 	BitcoinExchange (const BitcoinExchange &value);
 	~BitcoinExchange ();
 	BitcoinExchange & operator=(const BitcoinExchange &value);
+	float	find(std::string date) const;
+	time_t	convert(const std::string& date) const;
 };
 
 #endif /* BITCOINEXCHANGE_HPP */
