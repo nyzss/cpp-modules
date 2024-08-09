@@ -26,7 +26,9 @@ int main(int ac, char **av)
 	{
 		BitcoinExchange	be("data.csv");
 
-		std::cout << be.get_date("2021-06-05 | 246.8") << std::endl;
+		// std::cout << BitcoinExchange::get_pair()
+		std::cout << "pair first: " << be.get_pair("2021-06-05 | 246.8").first << std::endl;
+		std::cout << "pair second: " << be.get_pair("2021-06-05 | 246.8").second << std::endl;
 		// std::cout << be.find("2022-02-05") << std::endl;
 		// std::cout <<  "-----------" << std::endl;
 		// std::cout << be.find("2012-07-15") << std::endl;

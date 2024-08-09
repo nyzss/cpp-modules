@@ -23,7 +23,7 @@ BitcoinExchange::BitcoinExchange(std::string path)
 		size_t	comma = line.find(',');
 		std::string	f = line.substr(0, comma);
 		std::string	rest = line.substr(comma + 1);
-		float	s = std::atof(rest.c_str());
+		double	s = std::atof(rest.c_str());
 		this->data.insert(std::make_pair(f, s));
 	}
 	input.close();
@@ -31,9 +31,27 @@ BitcoinExchange::BitcoinExchange(std::string path)
 
 std::string	BitcoinExchange::get_date(std::string raw)
 {
-	size_t		v;
-	std::string	f;
+	size_t v = raw.find('|');
+	if (v == std::string::npos)
+		throw std::logic_error("Invalid date");
 
+	std::string f = raw.substr(0, v - 1);
+	return f;
+}
+
+double	BitcoinExchange::get_value(std::string raw)
+{
+	size_t v = raw.find('|');
+	if (v == std::string::npos)
+		throw std::logic_error("Invalid date");
+
+	std::string	f = raw.substr(v + 1);
+	double	val = std::strtod(f.c_str(), NULL);
+	return val;
+}
+
+BitcoinExchange::pair	BitcoinExchange::get_pair(std::string raw)
+{
 	if (raw.length() < MIN_RAW_ROW)
 		throw std::logic_error("Invalid line");
 	std::string::const_iterator	it;
@@ -42,14 +60,13 @@ std::string	BitcoinExchange::get_date(std::string raw)
 		if (std::isalpha(*it))
 		throw std::logic_error("Invalid line");
 	}
-	if ((v = raw.find('|')) != std::string::npos)
-	{
-		f = raw.substr(0, v - 1);
-	}
-	BitcoinExchange::validate_date(f);
-	return f;
-}
 
+	BitcoinExchange::pair pair;
+	pair.first = BitcoinExchange::get_date(raw);
+	BitcoinExchange::validate_date(pair.first);
+	pair.second = BitcoinExchange::get_value(raw);
+	return pair;
+}
 
 void	BitcoinExchange::validate_date(std::string date)
 {
@@ -63,11 +80,11 @@ void	BitcoinExchange::validate_date(std::string date)
 	}
 }
 
-float	BitcoinExchange::find(std::string date) const
+double	BitcoinExchange::find(std::string date) const
 {
 	BitcoinExchange::validate_date(date);
 
-	std::map<std::string, float, std::greater<std::string> >::const_iterator it;
+	BitcoinExchange::const_iterator it;
 	it = this->data.lower_bound(date);
 
 	if (it == this->data.end() && this->data.end()->first != date)

@@ -28,18 +28,22 @@
 class BitcoinExchange
 {
 private:
-	std::map<std::string, float, std::greater<std::string> > data;
+	static std::string	get_date(std::string raw);
+	static double	get_value(std::string raw);
+	typedef std::map<std::string, double, std::greater<std::string> > container;
+	container data;
 	BitcoinExchange () {};
 public:
-	typedef std::map<std::string, float>::iterator iterator;
-	typedef std::map<std::string, float>::const_iterator const_iterator;
+	typedef	std::pair<std::string, double> pair;
+	typedef container::iterator iterator;
+	typedef container::const_iterator const_iterator;
 	BitcoinExchange (std::string path);
 	BitcoinExchange (const BitcoinExchange &value);
 	~BitcoinExchange ();
 	BitcoinExchange & operator=(const BitcoinExchange &value);
 	static void	validate_date(std::string date);
-	float	find(std::string date) const;
-	static std::string	get_date(std::string raw);
+	double	find(std::string date) const;
+	static BitcoinExchange::pair	get_pair(std::string raw);
 };
 
 #endif /* BITCOINEXCHANGE_HPP */
