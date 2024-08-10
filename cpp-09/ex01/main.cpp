@@ -24,9 +24,15 @@ static void	err(const char *s)
 int main(int ac, char **av)
 {
 	if (ac != 2)
-		err("enter an argument.");
-
-	RPN::calculate(av[1]);
+		err("program needs a single argument to run.");
+	try
+	{
+		RPN::calculate(av[1]);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 // examples on leetcode

@@ -16,7 +16,10 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include <stack>
+
+# define MAX_OPS 4
 
 enum	rpn_op
 {
@@ -37,9 +40,17 @@ private:
 	RPN () : op(NONE), var1(0), var2(0) {};
 	RPN (const RPN &value) { (void)value; };
 	RPN & operator=(const RPN &value) { (void)value; return *this; };
+	static void validate(std::string raw);
 public:
-	~RPN ();
+	~RPN () {};
 	static void calculate(std::string raw);
+	class InvalidArgument : public std::exception
+	{
+		const char *what() const throw()
+		{
+			return "Invalid argument, please provide a valid RPN value.";
+		}
+	};
 };
 
 #endif /* RPN_HPP */

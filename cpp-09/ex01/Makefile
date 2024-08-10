@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 DEP_FLAG = -MMD
 
-SRC_FILES = main.cpp
+SRC_FILES = main.cpp RPN.cpp
 
 INCLUDES = ./
 
