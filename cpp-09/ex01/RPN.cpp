@@ -94,9 +94,9 @@ void	RPN::calculate(std::string raw)
 			s.push(std::atoi(tok.c_str()));
 		else
 		{
-			var1 = s.top();
-			s.pop();
 			var2 = s.top();
+			s.pop();
+			var1 = s.top();
 			s.pop();
 			switch (op)
 			{
@@ -116,7 +116,6 @@ void	RPN::calculate(std::string raw)
 					break ;
 			}
 			s.push(res);
-			std::cout << s.top() << std::endl;
 		}
 		if (!next)
 			break ;
