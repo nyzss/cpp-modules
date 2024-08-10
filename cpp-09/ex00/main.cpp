@@ -32,10 +32,14 @@ int main(int ac, char **av)
 		BitcoinExchange	be("data.csv");
 
 		std::string	line;
+		std::getline(s, line);
+		if (line != "date | value")
+		{
+			// err("Please provide a format as the first line.");
+			std::cerr << "Please provide a format as the first line." << std::endl;
+		}
 		while (std::getline(s, line))
 		{
-			if (line == "date | value")
-				continue ;
 			BitcoinExchange::pair pair;
 
 			try

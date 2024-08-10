@@ -101,8 +101,6 @@ double	BitcoinExchange::find(std::string date) const
 	if (it == this->data.end() && this->data.end()->first != date)
 		throw std::runtime_error("no such date is found.");
 
-	// std::cout << "date:\t     " << date << std::endl;
-	// std::cout << "lower_bound: " << it->first << std::endl;
 	return it->second;
 }
 
