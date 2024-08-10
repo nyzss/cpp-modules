@@ -35,6 +35,14 @@ std::string	BitcoinExchange::get_date(std::string raw)
 		throw std::logic_error("Invalid date");
 
 	std::string f = raw.substr(0, v - 1);
+	for (size_t i = 0; i < f.length(); i++)
+	{
+		if ((i < 4 || i == 5 || i == 6 || i == 8 || i == 9) && !std::isdigit(f[i]))
+			throw std::logic_error("Invalid date");
+		else if ((i == 4 || i == 7) && f[i] != '-')
+			throw std::logic_error("Invalid date");
+	}
+
 	return f;
 }
 
@@ -46,8 +54,10 @@ double	BitcoinExchange::get_value(std::string raw)
 
 	std::string	f = raw.substr(v + 1);
 	double	val = std::strtod(f.c_str(), NULL);
-	if (val < 0 || val > 1000)
-		throw std::logic_error("invalid number");
+	if (val > 1000)
+		throw std::logic_error("Error: number too high");
+	else if (val < 0)
+		throw std::logic_error("Error: number too low");
 	return val;
 }
 
