@@ -13,6 +13,8 @@
 #include <iostream>
 #include <string>
 
+#include <RPN.hpp>
+
 static void	err(const char *s)
 {
 	std::cerr << s << std::endl;
@@ -23,6 +25,8 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 		err("enter an argument.");
+
+	RPN::calculate(av[1]);
 }
 
 // examples on leetcode
