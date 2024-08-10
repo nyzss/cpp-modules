@@ -94,6 +94,8 @@ void	RPN::calculate(std::string raw)
 			s.push(std::atoi(tok.c_str()));
 		else
 		{
+			if (s.size() < 2)
+				throw std::logic_error("Not enough number in the stack, wrong calculation, aborting.");
 			var2 = s.top();
 			s.pop();
 			var1 = s.top();
@@ -120,4 +122,7 @@ void	RPN::calculate(std::string raw)
 		if (!next)
 			break ;
 	}
+	if (s.size() > 1)
+		throw std::logic_error("Too much number in the stack, not enough operations, aborting.");
+	std::cout << s.top() << std::endl;
 }
