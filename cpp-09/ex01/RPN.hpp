@@ -25,6 +25,7 @@ private:
 	enum	rpn_op
 	{
 		NONE = 0,
+		NUMBER = 1,
 		PLUS = '+',
 		MINUS = '-',
 		MUL = '*',
@@ -40,6 +41,7 @@ private:
 	RPN & operator=(const RPN &value) { (void)value; return *this; };
 	static void validate(std::string raw);
 	static std::string	find_next(const std::string &raw);
+	static rpn_op	get_type(const std::string &tok);
 public:
 	~RPN () {};
 	static void calculate(std::string raw);

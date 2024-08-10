@@ -44,6 +44,28 @@ void	RPN::validate(std::string raw)
 	}
 }
 
+RPN::rpn_op	RPN::get_type(const std::string &tok)
+{
+	if (tok.length() == 1)
+	{
+		char c = tok[0];
+		switch (c)
+		{
+		case PLUS:
+			return PLUS;
+		case MINUS:
+			return MINUS;
+		case MUL:
+			return MUL;
+		case DIV:
+			return DIV;
+		default:
+			break ;
+		}
+	}
+	return NUMBER;
+}
+
 std::string	RPN::find_next(const std::string &raw)
 {
 	static size_t	last;
@@ -70,5 +92,4 @@ void	RPN::calculate(std::string raw)
 		if (!next)
 			break ;
 	}
-	// std::cout << raw << std::endl;
 }
