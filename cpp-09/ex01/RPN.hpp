@@ -19,28 +19,27 @@
 #include <cstdlib>
 #include <stack>
 
-# define MAX_OPS 4
-
-enum	rpn_op
-{
-	NONE = 0,
-	PLUS = '+',
-	MINUS = '-',
-	MUL = '*',
-	DIV = '/',
-};
-
 class RPN
 {
 private:
-	std::stack<int> s;
-	rpn_op			op;
-	int				var1;
-	int				var2;
-	RPN () : op(NONE), var1(0), var2(0) {};
+	enum	rpn_op
+	{
+		NONE = 0,
+		PLUS = '+',
+		MINUS = '-',
+		MUL = '*',
+		DIV = '/',
+	};
+	static std::stack<int> s;
+	static rpn_op			op;
+	static int				var1;
+	static int				var2;
+	static bool				next;
+	RPN () {};
 	RPN (const RPN &value) { (void)value; };
 	RPN & operator=(const RPN &value) { (void)value; return *this; };
 	static void validate(std::string raw);
+	static std::string	find_next(const std::string &raw);
 public:
 	~RPN () {};
 	static void calculate(std::string raw);

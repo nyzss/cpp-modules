@@ -12,7 +12,13 @@
 
 #include "RPN.hpp"
 
-static int	isop(char c)
+std::stack<int>	RPN::s;
+RPN::rpn_op		RPN::op;
+int				RPN::var1;
+int				RPN::var2;
+bool			RPN::next;
+
+static bool	isop(char c)
 {
 	char	ops[] = {'+', '-', '/', '*'};
 	int		max_ops = 4;
@@ -20,9 +26,9 @@ static int	isop(char c)
 	for (int i = 0; i < max_ops; i++)
 	{
 		if (ops[i] == c)
-			return (1);
+			return (true);
 	}
-	return (0);
+	return (false);
 }
 
 void	RPN::validate(std::string raw)
@@ -38,8 +44,31 @@ void	RPN::validate(std::string raw)
 	}
 }
 
+std::string	RPN::find_next(const std::string &raw)
+{
+	static size_t	last;
+	size_t	pos = raw.find(' ', last);
+	std::string token = raw.substr(last, pos - last);
+	if (pos == std::string::npos)
+	{
+		next = false;
+		return token;
+	}
+	last = pos + 1;
+	next = true;
+	return token;
+}
+
 void	RPN::calculate(std::string raw)
 {
 	RPN::validate(raw);
-	std::cout << raw << std::endl;
+	next = true;
+	while (next)
+	{
+		std::string	tok = find_next(raw);
+		std::cout << "TOK: " << tok << std::endl;
+		if (!next)
+			break ;
+	}
+	// std::cout << raw << std::endl;
 }
