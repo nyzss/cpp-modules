@@ -35,6 +35,7 @@ private:
 	static rpn_op			op;
 	static int				var1;
 	static int				var2;
+	static int				res;
 	static bool				next;
 	RPN () {};
 	RPN (const RPN &value) { (void)value; };

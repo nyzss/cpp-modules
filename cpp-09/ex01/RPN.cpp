@@ -16,6 +16,7 @@ std::stack<int>	RPN::s;
 RPN::rpn_op		RPN::op;
 int				RPN::var1;
 int				RPN::var2;
+int				RPN::res;
 bool			RPN::next;
 
 static bool	isop(char c)
@@ -88,7 +89,35 @@ void	RPN::calculate(std::string raw)
 	while (next)
 	{
 		std::string	tok = find_next(raw);
-		std::cout << "TOK: " << tok << std::endl;
+		op = RPN::get_type(tok);
+		if (op == NUMBER)
+			s.push(std::atoi(tok.c_str()));
+		else
+		{
+			var1 = s.top();
+			s.pop();
+			var2 = s.top();
+			s.pop();
+			switch (op)
+			{
+				case PLUS:
+					res = var1 + var2;
+					break;
+				case MINUS:
+					res = var1 - var2;
+					break;
+				case MUL:
+					res = var1 * var2;
+					break;
+				case DIV:
+					res = var1 / var2;
+					break;
+				default:
+					break ;
+			}
+			s.push(res);
+			std::cout << s.top() << std::endl;
+		}
 		if (!next)
 			break ;
 	}
