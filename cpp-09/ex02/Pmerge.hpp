@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:41:44 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/11 17:41:44 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/12 08:21:28 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 
 private:
 	static std::vector<int>	v;
-	static int					max_n;
+	static int				max_n;
 
 public:
 	~Pmerge () {};
