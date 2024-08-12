@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:43:37 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 11:21:02 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/12 11:36:11 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int					Pmerge::max_n;
 // 	}
 // }
 
-void	Pmerge::insert_sort(int args[])
+void	Pmerge::insert_sort(const int args[])
 {
 	for (int i = 0; i < max_n; i++)
 	{
@@ -59,7 +59,7 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 	return res;
 }
 
-void	Pmerge::sort(int max, int args[])
+std::vector<int>	Pmerge::sort(int max, int args[])
 {
 	max_n = max;
 	for (int i = 1; i < max_n; i++)
@@ -78,14 +78,7 @@ void	Pmerge::sort(int max, int args[])
 	}
 	v = merge(v);
 	Pmerge::insert_sort(args);
-	for (std::vector<int>::const_iterator it = v.begin(); it != v.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-	for (int i = 0; i < max_n; i++)
-	{
-		if (args[i] != -1)
-			std::cout << "i: " << args[i] << std::endl;
-	}
+	return v;
 }
 
 // compare i and i - 1
