@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:41:44 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 11:36:18 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/12 11:44:40 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ private:
 	static std::vector<int>	v;
 	static int				max_n;
 
+private:
+	static std::vector<int> merge(std::vector<int> &arr);
+	static void	insert_sort(const int args[]);
+
 public:
 	~Pmerge () {};
 	static std::vector<int>	sort(int max, int args[]);
-	static std::vector<int> merge(std::vector<int> &arr);
-	static void	insert_sort(const int args[]);
-	// static std::vector<int>	insert_sort(const std::vector<int> &vec);
 };
 
 #endif /* PMERGE_HPP */
-
-
-// static void	sort(std::vector<int> args);
