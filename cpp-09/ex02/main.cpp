@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:13:05 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 09:39:10 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/12 10:48:58 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ int main(int ac, char **av)
 	int	*args = new int[ac - 1]();
 	for (int i = 0; i < ac - 1; i++)
 		args[i] = std::atoi(av[i + 1]);
-	Pmerge::sort(ac - 1, args);
+
+	try
+	{
+		Pmerge::sort(ac - 1, args);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	delete[] args;
 }
