@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:41:44 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 11:16:35 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/12 11:20:09 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ public:
 	~Pmerge () {};
 	static void	sort(int max, int args[]);
 	static std::vector<int> merge(std::vector<int> &arr);
-	static std::vector<int>	insert_sort(const std::vector<int> &vec);
+	static void	insert_sort(int args[]);
+	// static std::vector<int>	insert_sort(const std::vector<int> &vec);
 };
 
 #endif /* PMERGE_HPP */

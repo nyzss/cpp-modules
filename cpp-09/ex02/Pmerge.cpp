@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:43:37 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 11:16:07 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/12 11:21:02 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ int					Pmerge::max_n;
 // 		return arr;
 // 	}
 // }
+
+void	Pmerge::insert_sort(int args[])
+{
+	for (int i = 0; i < max_n; i++)
+	{
+		if (args[i] != -1)
+		{
+			std::vector<int>::iterator pos = std::upper_bound(v.begin(), v.end(), args[i]);
+			v.insert(pos, args[i]);
+		}
+	}
+}
 
 std::vector<int> Pmerge::merge(std::vector<int> &arr)
 {
@@ -65,6 +77,7 @@ void	Pmerge::sort(int max, int args[])
 		i += 1;
 	}
 	v = merge(v);
+	Pmerge::insert_sort(args);
 	for (std::vector<int>::const_iterator it = v.begin(); it != v.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
