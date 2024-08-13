@@ -50,13 +50,10 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 	{
 		std::vector<int>::iterator pos;
 		pos = std::upper_bound(left_half.begin(), left_half.end(), *right_it);
-		v.insert(pos, *right_it);
+		left_half.insert(pos, *right_it);
 	}
 
-	// right_half = merge(right_half);
-	std::vector<int> res;
-	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
-	return res;
+	return right_half;
 }
 
 std::vector<int>	Pmerge::sort(int max, int args[])
@@ -76,11 +73,10 @@ std::vector<int>	Pmerge::sort(int max, int args[])
 		mid_iter++;
 	}
 
-
-	// v = merge(v);
-	// Pmerge::insert_sort(args);
+	v = merge(v);
 	return v;
 }
+	// Pmerge::insert_sort(args);
 
 // compare i and i - 1
 // if i > i - 1 -> push i to the vec
