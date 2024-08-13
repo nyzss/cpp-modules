@@ -41,11 +41,12 @@ inline std::vector<int> Pmerge::merge(std::vector<int> arr)
 inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> &v)
 {
 	std::vector<std::pair<int, int> > pairs;
+	pairs.reserve(v.size() / 2);
 	std::vector<int>::const_iterator c_it = v.begin();
 	for (; c_it < v.end(); c_it += 2)
 	{
 		std::vector<int>::const_iterator next = c_it + 1;
-		if (c_it != v.end() && next != v.end())
+		if (next != v.end())
 		{
 			pairs.push_back(std::make_pair(*c_it, *next));
 			std::pair<int, int> &p = pairs.back();
@@ -61,6 +62,7 @@ inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> 
 std::vector<int>	Pmerge::sort(std::vector<int> v)
 {
 	std::vector<int> a;
+	a.reserve(v.size());
 	std::vector<std::pair<int, int> > pairs = pair_up(v);
 	std::vector<std::pair<int, int> >::const_iterator c_it;
 
@@ -70,16 +72,15 @@ std::vector<int>	Pmerge::sort(std::vector<int> v)
 			continue;
 		a.push_back((*c_it).second);
 	}
-	std::vector<int> res = merge(a);
+	a = merge(a);
 
 	for (c_it = pairs.begin(); c_it != pairs.end(); c_it++)
 	{
-		std::vector<int>::iterator pos;
-		pos = std::upper_bound(res.begin(), res.end(), (*c_it).first);
-		res.insert(pos, (*c_it).first);
+		std::vector<int>::iterator pos = std::upper_bound(a.begin(), a.end(), (*c_it).first);
+		a.insert(pos, (*c_it).first);
 	}
 
-	return res;
+	return a;
 }
 
 // this is another way of doing it
