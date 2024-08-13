@@ -31,9 +31,13 @@ int main(int ac, char **av)
 
 	try
 	{
+		std::vector<int> vec;
+		for (int i = 0; i < ac - 1; i++)
+			vec.push_back(args[i]);
+
 		struct timeval tm1, tm2;
 		gettimeofday(&tm1, NULL);
-		std::vector<int> v = Pmerge::sort(ac - 1, args);
+		std::vector<int> v = Pmerge::sort(vec);
 		gettimeofday(&tm2, NULL);
 
 		float time = float(tm2.tv_usec - tm1.tv_usec) / 1000;
@@ -43,7 +47,7 @@ int main(int ac, char **av)
 		std::vector<int>::const_iterator it = v.begin();
 		for (; it != v.end(); it++)
 		{
-			if (it > v.begin() + 5)
+			if (it > v.begin() + 10)
 			{
 				std::cout << "[...]";
 				break ;

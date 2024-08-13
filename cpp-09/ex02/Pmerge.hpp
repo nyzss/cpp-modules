@@ -25,16 +25,11 @@ private:
 	Pmerge & operator=(const Pmerge &value) { (void)value; return *this; };
 
 private:
-	static std::vector<int>	v;
-	static int				max_n;
-
-private:
 	static std::vector<int> merge(std::vector<int> &arr) __attribute__((hot));
-	static void	insert_sort(const int args[]);
 
 public:
 	~Pmerge () {};
-	static std::vector<int>	sort(int max, int args[]);
+	static std::vector<int>	sort(std::vector<int> vec);
 };
 
 #endif /* PMERGE_HPP */
