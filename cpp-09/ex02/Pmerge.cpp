@@ -44,7 +44,16 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 	std::vector<int> left_half(arr.begin(), it);
 	std::vector<int> right_half(it, arr.end());
 	left_half = merge(left_half);
-	right_half = merge(right_half);
+
+	std::vector<int>::const_iterator right_it = right_half.begin();
+	for (; right_it != right_half.end(); right_it++)
+	{
+		std::vector<int>::iterator pos;
+		pos = std::upper_bound(left_half.begin(), left_half.end(), *right_it);
+		v.insert(pos, *right_it);
+	}
+
+	// right_half = merge(right_half);
 	std::vector<int> res;
 	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
 	return res;
