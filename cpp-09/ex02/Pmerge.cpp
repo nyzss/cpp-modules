@@ -16,15 +16,6 @@
 std::vector<int>	Pmerge::v;
 int					Pmerge::max_n;
 
-// int *Pmerge::merge(int arr[], int size)
-// {
-// 	if (size == 2 && arr[0] > arr[1])
-// 	{
-// 		std::swap(arr[0], arr[1]);
-// 		return arr;
-// 	}
-// }
-
 void	Pmerge::insert_sort(const int args[])
 {
 	for (int i = 0; i < max_n; i++)
@@ -62,22 +53,23 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 std::vector<int>	Pmerge::sort(int max, int args[])
 {
 	max_n = max;
-	for (int i = 1; i < max_n; i++)
+	for (int i = 0; i < max_n; i++)
+		v.push_back(args[i]);
+
+	std::vector<int>::iterator	mid_iter = v.begin();
+	std::advance(mid_iter, v.size() / 2);
+	std::vector<int>::iterator	start = v.begin();
+	std::vector<int>::const_iterator	mid = mid_iter;
+	for (; start != mid; start++)
 	{
-		if (args[i] > args[i - 1])
-		{
-			v.push_back(args[i]);
-			args[i] = -1;
-		}
-		else
-		{
-			v.push_back(args[i - 1]);
-			args[i - 1] = -1;
-		}
-		i += 1;
+		if (*start < *mid_iter)
+			std::swap(*start, *mid_iter);
+		mid_iter++;
 	}
-	v = merge(v);
-	Pmerge::insert_sort(args);
+
+
+	// v = merge(v);
+	// Pmerge::insert_sort(args);
 	return v;
 }
 
