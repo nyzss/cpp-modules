@@ -23,8 +23,9 @@ inline std::vector<int> Pmerge::merge(std::vector<int> arr)
 		std::swap(arr[0], arr[1]);
 		return arr;
 	}
-	std::vector<int>::iterator it = arr.begin();
-	std::advance(it, arr.size() / 2);
+	std::vector<int>::iterator it = arr.begin() + arr.size() / 2;
+	// std::vector<int>::iterator it = arr.begin();
+	// std::advance(it, arr.size() / 2);
 
 	std::vector<int> left_half(arr.begin(), it);
 	std::vector<int> right_half(it, arr.end());
