@@ -53,7 +53,7 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 		left_half.insert(pos, *right_it);
 	}
 
-	return right_half;
+	return left_half;
 }
 
 std::vector<int>	Pmerge::sort(int max, int args[])
