@@ -29,7 +29,7 @@ private:
 	static int				max_n;
 
 private:
-	static std::vector<int> merge(std::vector<int> &arr);
+	static std::vector<int> merge(std::vector<int> &arr) __attribute__((hot));
 	static void	insert_sort(const int args[]);
 
 public:

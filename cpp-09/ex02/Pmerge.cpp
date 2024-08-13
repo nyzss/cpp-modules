@@ -28,7 +28,7 @@ void	Pmerge::insert_sort(const int args[])
 	}
 }
 
-std::vector<int> Pmerge::merge(std::vector<int> &arr)
+inline std::vector<int> Pmerge::merge(std::vector<int> &arr)
 {
 	if (arr.size() <= 1)
 		return arr;
@@ -43,7 +43,7 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 	std::advance(it, a.size() / 2);
 
 	std::vector<int> left_half(a.begin(), it);
-	std::vector<int> right_half(it, a.end());
+	const std::vector<int> right_half(it, a.end());
 	left_half = merge(left_half);
 
 	std::vector<int>::const_iterator right_it = right_half.begin();
