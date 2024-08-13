@@ -13,7 +13,72 @@
 #include "Pmerge.hpp"
 #include <iostream>
 
-inline std::vector<int> Pmerge::merge(std::vector<int> &arr)
+inline std::vector<int> Pmerge::merge(std::vector<int> arr)
+{
+	if (arr.size() <= 1)
+		return arr;
+	else if (arr.size() == 2)
+	{
+		if (arr[0] > arr[1])
+		std::swap(arr[0], arr[1]);
+		return arr;
+	}
+	const std::vector<int> &a = arr;
+	std::vector<int>::const_iterator it = a.begin();
+	std::advance(it, a.size() / 2);
+
+	std::vector<int> left_half(a.begin(), it);
+	std::vector<int> right_half(it, a.end());
+	left_half = merge(left_half);
+	right_half = merge(right_half);
+
+	std::vector<int> res;
+	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
+	return res;
+}
+
+inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> &v)
+{
+	std::vector<std::pair<int, int> > pairs;
+	std::vector<int>::const_iterator c_it = v.begin();
+	for (; c_it < v.end(); c_it += 2)
+	{
+		std::vector<int>::const_iterator next = c_it + 1;
+		if (c_it != v.end() && next != v.end())
+		{
+			pairs.push_back(std::make_pair(*c_it, *next));
+			std::pair<int, int> &p = pairs.back();
+			if (p.first > p.second)
+				std::swap(p.first, p.second);
+		}
+	}
+	if (v.size() % 2 != 0)
+		pairs.push_back(std::make_pair(v.back(), v.back()));
+	return pairs;
+}
+
+std::vector<int>	Pmerge::sort(std::vector<int> v)
+{
+	std::vector<int> a;
+	std::vector<std::pair<int, int> > pairs = pair_up(v);
+	std::vector<std::pair<int, int> >::const_iterator c_it;
+
+	for (c_it = pairs.begin(); c_it != pairs.end(); c_it++)
+		a.push_back((*c_it).second);
+	std::vector<int> res = merge(a);
+
+	for (c_it = pairs.begin(); c_it != pairs.end(); c_it++)
+	{
+		std::vector<int>::iterator pos;
+		pos = std::upper_bound(res.begin(), res.end(), (*c_it).first);
+		res.insert(pos, (*c_it).first);
+	}
+
+	return res;
+}
+
+// this is another way of doing it
+inline std::vector<int> Pmerge::merge_v2(std::vector<int> &arr)
 {
 	if (arr.size() <= 1)
 		return arr;
@@ -41,7 +106,7 @@ inline std::vector<int> Pmerge::merge(std::vector<int> &arr)
 	return left_half;
 }
 
-std::vector<int>	Pmerge::sort(std::vector<int> v)
+std::vector<int>	Pmerge::sort_v2(std::vector<int> v)
 {
 	std::vector<int>::iterator	mid_iter = v.begin();
 	std::advance(mid_iter, v.size() / 2);

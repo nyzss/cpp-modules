@@ -2,6 +2,8 @@
 
 N_ARGS=3000
 
+NUMBER="${1:-1}"
+
 PROGRAM=./Pmerge
 
 make
@@ -14,6 +16,6 @@ run() {
 	$PROGRAM $(rand)
 }
 
-for i in {1..1} ;
-	do run ;
+for ((i=1; i<=NUMBER; i++)); do
+    run
 done
