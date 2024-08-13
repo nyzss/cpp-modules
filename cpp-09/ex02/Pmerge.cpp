@@ -38,11 +38,12 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 		std::swap(arr[0], arr[1]);
 		return arr;
 	}
-	std::vector<int>::iterator it = arr.begin();
-	std::advance(it, arr.size() / 2);
+	const std::vector<int> &a = arr;
+	std::vector<int>::const_iterator it = a.begin();
+	std::advance(it, a.size() / 2);
 
-	std::vector<int> left_half(arr.begin(), it);
-	std::vector<int> right_half(it, arr.end());
+	std::vector<int> left_half(a.begin(), it);
+	std::vector<int> right_half(it, a.end());
 	left_half = merge(left_half);
 
 	std::vector<int>::const_iterator right_it = right_half.begin();
@@ -52,7 +53,6 @@ std::vector<int> Pmerge::merge(std::vector<int> &arr)
 		pos = std::upper_bound(left_half.begin(), left_half.end(), *right_it);
 		left_half.insert(pos, *right_it);
 	}
-
 	return left_half;
 }
 
@@ -72,9 +72,8 @@ std::vector<int>	Pmerge::sort(int max, int args[])
 			std::swap(*start, *mid_iter);
 		mid_iter++;
 	}
-
-	v = merge(v);
-	return v;
+	// v = ;
+	return merge(v);
 }
 	// Pmerge::insert_sort(args);
 
