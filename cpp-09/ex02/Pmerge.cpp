@@ -23,16 +23,16 @@ inline std::vector<int> Pmerge::merge(std::vector<int> arr)
 		std::swap(arr[0], arr[1]);
 		return arr;
 	}
-	const std::vector<int> &a = arr;
-	std::vector<int>::const_iterator it = a.begin();
-	std::advance(it, a.size() / 2);
+	std::vector<int>::iterator it = arr.begin();
+	std::advance(it, arr.size() / 2);
 
-	std::vector<int> left_half(a.begin(), it);
-	std::vector<int> right_half(it, a.end());
+	std::vector<int> left_half(arr.begin(), it);
+	std::vector<int> right_half(it, arr.end());
 	left_half = merge(left_half);
 	right_half = merge(right_half);
 
 	std::vector<int> res;
+	res.reserve(left_half.size() + right_half.size());
 	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
 	return res;
 }
@@ -64,7 +64,11 @@ std::vector<int>	Pmerge::sort(std::vector<int> v)
 	std::vector<std::pair<int, int> >::const_iterator c_it;
 
 	for (c_it = pairs.begin(); c_it != pairs.end(); c_it++)
+	{
+		if ((*c_it).first == (*c_it).second)
+			continue;
 		a.push_back((*c_it).second);
+	}
 	std::vector<int> res = merge(a);
 
 	for (c_it = pairs.begin(); c_it != pairs.end(); c_it++)
