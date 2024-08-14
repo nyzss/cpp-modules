@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:41:44 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/14 13:45:39 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/14 15:01:59 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ public:
 
 // VALID ONE (most likely)
 private:
+	typedef std::vector<int> t;
 	static std::vector<int> merge(const std::vector<int> &arr) __attribute__((hot));
 	static std::vector<std::pair<int, int> > pair_up(const std::vector<int> &v) __attribute__((hot));
 
 public:
 	~Pmerge () {};
-	static std::vector<int>	sort(std::vector<int> vec);
+	static std::vector<int>	sort(const std::vector<int> &vec);
 };
 
 #endif /* PMERGE_HPP */
