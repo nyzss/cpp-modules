@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:43:37 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/14 13:51:26 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/14 13:56:04 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@ inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
 		return arr;
 	else if (arr_size == 2)
 	{
-		std::vector<int> r(arr);
 		if (arr[0] > arr[1])
+		{
+			std::vector<int> r(arr);
 			std::swap(r[0], r[1]);
-		return r;
+			return r;
+		}
+		return arr;
 	}
 	std::vector<int>::const_iterator it = arr.begin() + arr_size / 2;
 
-	std::vector<int> left_half = merge(std::vector<int>(arr.begin(), it));
-	std::vector<int> right_half = merge(std::vector<int>(it, arr.end()));
+	const std::vector<int> left_half = merge(std::vector<int>(arr.begin(), it));
+	const std::vector<int> right_half = merge(std::vector<int>(it, arr.end()));
 
 	std::vector<int> res;
 	res.reserve(left_half.size() + right_half.size());
