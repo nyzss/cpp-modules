@@ -6,26 +6,26 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:43:37 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 11:36:11 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/14 13:49:28 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pmerge.hpp"
 #include <iostream>
 
-inline std::vector<int> Pmerge::merge(std::vector<int> arr)
+inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
 {
-	if (arr.size() <= 1)
+	size_t	arr_size = arr.size();
+	if (arr_size <= 1)
 		return arr;
-	else if (arr.size() == 2)
+	else if (arr_size == 2)
 	{
+		std::vector<int> r(arr);
 		if (arr[0] > arr[1])
-		std::swap(arr[0], arr[1]);
-		return arr;
+			std::swap(r[0], r[1]);
+		return r;
 	}
-	std::vector<int>::iterator it = arr.begin() + arr.size() / 2;
-	// std::vector<int>::iterator it = arr.begin();
-	// std::advance(it, arr.size() / 2);
+	std::vector<int>::const_iterator it = arr.begin() + arr_size / 2;
 
 	std::vector<int> left_half(arr.begin(), it);
 	std::vector<int> right_half(it, arr.end());
