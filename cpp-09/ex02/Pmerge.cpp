@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:43:37 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/14 15:23:22 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/14 15:40:16 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,48 +49,33 @@
 // suivi de celui à 9, puis à 11 (suivant Jacobsthal...)
 // et j'ai la liste [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] à renvoyer.
 
-inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
-{
-}
+// inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
+// {
+// }
 
-inline std::vector<int>	Pmerge::sort(const std::vector<int> &vec)
+std::vector<int>	Pmerge::sort(const std::vector<int> &vec)
 {
 	// paired up numbers, if odd then the last pair is first_num == second_num
+	if (vec.size() == 1)
+		return vec;
 	std::vector<int> big;
 	big.reserve(vec.size() >> 1);
 	std::vector<std::pair<int, int> > pairs = pair_up(vec);
 	std::vector<std::pair<int, int> >::const_iterator it;
 	for (it = pairs.begin(); it != pairs.end(); it++)
 	{
-
+		if ((*it).first == (*it).second)
+			continue;
+		big.push_back((*it).second);
 	}
+	big = sort(big);
+	for (it = pairs.begin(); it != pairs.end(); it++)
+	{
+		std::vector<int>::iterator pos = std::upper_bound(big.begin(), big.end(), (*it).first);
+		big.insert(pos, (*it).first);
+	}
+	return big;
 }
-
-// inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
-// {
-// 	size_t	arr_size = arr.size();
-// 	if (arr_size <= 1)
-// 		return arr;
-// 	else if (arr_size == 2)
-// 	{
-// 		if (arr[0] > arr[1])
-// 		{
-// 			std::vector<int> r(arr);
-// 			std::swap(r[0], r[1]);
-// 			return r;
-// 		}
-// 		return arr;
-// 	}
-// 	std::vector<int>::const_iterator it = arr.begin() + arr_size / 2;
-
-// 	const std::vector<int> left_half = merge(std::vector<int>(arr.begin(), it));
-// 	const std::vector<int> right_half = merge(std::vector<int>(it, arr.end()));
-
-// 	std::vector<int> res;
-// 	res.reserve(left_half.size() + right_half.size());
-// 	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
-// 	return res;
-// }
 
 inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> &v)
 {
@@ -240,3 +225,28 @@ inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> 
 // 	std::cout << std::endl;
 // }
 
+// inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
+// {
+// 	size_t	arr_size = arr.size();
+// 	if (arr_size <= 1)
+// 		return arr;
+// 	else if (arr_size == 2)
+// 	{
+// 		if (arr[0] > arr[1])
+// 		{
+// 			std::vector<int> r(arr);
+// 			std::swap(r[0], r[1]);
+// 			return r;
+// 		}
+// 		return arr;
+// 	}
+// 	std::vector<int>::const_iterator it = arr.begin() + arr_size / 2;
+
+// 	const std::vector<int> left_half = merge(std::vector<int>(arr.begin(), it));
+// 	const std::vector<int> right_half = merge(std::vector<int>(it, arr.end()));
+
+// 	std::vector<int> res;
+// 	res.reserve(left_half.size() + right_half.size());
+// 	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
+// 	return res;
+// }

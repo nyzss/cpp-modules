@@ -6,7 +6,7 @@
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 17:13:05 by okoca             #+#    #+#             */
-/*   Updated: 2024/08/12 11:43:44 by okoca            ###   ########.fr       */
+/*   Updated: 2024/08/14 15:40:05 by okoca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av)
 		gettimeofday(&tm2, NULL);
 
 		float time = float(tm2.tv_usec - tm1.tv_usec) / 1000;
-		std::cout << "exec: " << time << " ms" << std::endl;
+		std::cout << "Pmerge::sort exec: " << time << " ms" << std::endl;
 
 		std::cout << "Result: ";
 		std::vector<int>::const_iterator it = v.begin();
