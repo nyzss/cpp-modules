@@ -53,6 +53,46 @@
 // {
 // }
 
+// class ComparisonCounter {
+// private:
+//     int count;
+
+// public:
+//     ComparisonCounter() : count(0) {}
+
+//     template<typename T>
+//     bool operator()(const T& a, const T& b) {
+//         ++count;
+//         return a < b;
+//     }
+// 	void	inc() { count++; }
+
+//     int getCount() const { return count; }
+//     void reset() { count = 0; }
+// };
+
+// template<typename Iterator, typename T, typename Compare>
+// Iterator my_upper_bound(Iterator first, Iterator last, const T& value, Compare comp) {
+//     Iterator it;
+//     typename std::iterator_traits<Iterator>::difference_type count, step;
+//     count = std::distance(first, last);
+
+//     while (count > 0) {
+//         it = first;
+//         step = count / 2;
+//         std::advance(it, step);
+//         if (!comp(value, *it)) {
+//             first = ++it;
+//             count -= step + 1;
+//         } else {
+//             count = step;
+//         }
+//     }
+//     return first;
+// }
+
+// ComparisonCounter	total_cmp;
+
 std::vector<int>	PmergeMe::sort(const std::vector<int> &vec)
 {
 	// paired up numbers, if odd then the last pair is first_num == second_num
