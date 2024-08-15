@@ -70,7 +70,7 @@ std::vector<int>	PmergeMe::sort(const std::vector<int> &vec)
 	}
 	big = sort(big);
 
-	std::vector<int> jacobsthal = generate_jacobsthal(pairs.size());
+	const std::vector<int> jacobsthal = generate_jacobsthal(pairs.size());
 	for (size_t i = 0; i < jacobsthal.size(); i++)
 	{
 		if ((size_t)jacobsthal[i] >= pairs.size())
@@ -115,7 +115,7 @@ inline std::vector<std::pair<int, int> > PmergeMe::pair_up(const std::vector<int
 	return pairs;
 }
 
-inline std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
+inline const std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
 {
 	std::vector<int>	jacobsthal;
 	jacobsthal.reserve(n);
