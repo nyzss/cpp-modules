@@ -16,7 +16,7 @@
 #include <sys/time.h>
 #include <cstdlib>
 
-#include "Pmerge.hpp"
+#include "PmergeMe.hpp"
 
 int main(int ac, char **av)
 {
@@ -37,11 +37,16 @@ int main(int ac, char **av)
 
 		struct timeval tm1, tm2;
 		gettimeofday(&tm1, NULL);
-		std::vector<int> v = Pmerge::sort(vec);
+		std::vector<int> v = PmergeMe::sort(vec);
 		gettimeofday(&tm2, NULL);
 
+		std::sort(vec.begin(), vec.end());
+
+		if (vec == v)
+			std::cout << "sorted succesfully!" << std::endl;
+
 		float time = float(tm2.tv_usec - tm1.tv_usec) / 1000;
-		std::cout << "Pmerge::sort exec: " << time << " ms" << std::endl;
+		std::cout << "PmergeMe::sort exec: " << time << " ms" << std::endl;
 
 		std::cout << "Result: ";
 		std::vector<int>::const_iterator it = v.begin();

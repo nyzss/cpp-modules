@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pmerge.cpp                                         :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pmerge.hpp"
+#include "PmergeMe.hpp"
 #include <iostream>
 
 
@@ -49,19 +49,13 @@
 // suivi de celui à 9, puis à 11 (suivant Jacobsthal...)
 // et j'ai la liste [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] à renvoyer.
 
-// inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
+// inline std::vector<int> PmergeMe::merge(const std::vector<int> &arr)
 // {
 // }
 
-std::vector<int>	Pmerge::sort(const std::vector<int> &vec)
+std::vector<int>	PmergeMe::sort(const std::vector<int> &vec)
 {
 	// paired up numbers, if odd then the last pair is first_num == second_num
-	std::vector<int> jacobsthal = generate_jacobsthal(vec.size());
-	for (size_t i = 0; i < jacobsthal.size(); i++)
-	{
-		std::cout << jacobsthal[i] << ", ";
-	}
-	std::cout << std::endl;
 	if (vec.size() == 1)
 		return vec;
 	std::vector<int> big;
@@ -75,15 +69,32 @@ std::vector<int>	Pmerge::sort(const std::vector<int> &vec)
 		big.push_back((*it).second);
 	}
 	big = sort(big);
+
+	std::vector<int> jacobsthal = generate_jacobsthal(pairs.size());
+	for (size_t i = 0; i < jacobsthal.size(); i++)
+	{
+		if ((size_t)jacobsthal[i] >= pairs.size())
+			break;
+		if (pairs[jacobsthal[i]].first != -1)
+		{
+			std::vector<int>::iterator pos = std::upper_bound(big.begin(), big.end(), pairs[jacobsthal[i]].first);
+			big.insert(pos, pairs[jacobsthal[i]].first);
+			pairs[jacobsthal[i]].first = -1;
+		}
+	}
+
 	for (it = pairs.begin(); it != pairs.end(); it++)
 	{
-		std::vector<int>::iterator pos = std::upper_bound(big.begin(), big.end(), (*it).first);
-		big.insert(pos, (*it).first);
+		if ((*it).first != -1)
+		{
+			std::vector<int>::iterator pos = std::upper_bound(big.begin(), big.end(), (*it).first);
+			big.insert(pos, (*it).first);
+		}
 	}
 	return big;
 }
 
-inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> &v)
+inline std::vector<std::pair<int, int> > PmergeMe::pair_up(const std::vector<int> &v)
 {
 	std::vector<std::pair<int, int> > pairs;
 	pairs.reserve(v.size() / 2);
@@ -104,7 +115,7 @@ inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> 
 	return pairs;
 }
 
-inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
+inline std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
 {
 	std::vector<int>	jacobsthal;
 	jacobsthal.reserve(n);
@@ -122,7 +133,7 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 	return jacobsthal;
 }
 
-// std::vector<int>	Pmerge::sort(std::vector<int> v)
+// std::vector<int>	PmergeMe::sort(std::vector<int> v)
 // {
 // 	std::vector<int> a;
 // 	a.reserve(v.size());
@@ -149,7 +160,7 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 // }
 
 // // this is another way of doing it
-// inline std::vector<int> Pmerge::merge_v2(std::vector<int> &arr)
+// inline std::vector<int> PmergeMe::merge_v2(std::vector<int> &arr)
 // {
 // 	if (arr.size() <= 1)
 // 		return arr;
@@ -177,7 +188,7 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 // 	return left_half;
 // }
 
-// std::vector<int>	Pmerge::sort_v2(std::vector<int> v)
+// std::vector<int>	PmergeMe::sort_v2(std::vector<int> v)
 // {
 // 	std::vector<int>::iterator	mid_iter = v.begin();
 // 	std::advance(mid_iter, v.size() / 2);
@@ -191,7 +202,7 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 // 	}
 // 	return merge(v);
 // }
-	// Pmerge::insert_sort(args);
+	// PmergeMe::insert_sort(args);
 
 // compare i and i - 1
 // if i > i - 1 -> push i to the vec
@@ -206,7 +217,7 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 /*
 * version with std::vector<int> instead of int array, idk why im keeping it here
 */
-// std::vector<int>	Pmerge::insert_sort(const std::vector<int> &args)
+// std::vector<int>	PmergeMe::insert_sort(const std::vector<int> &args)
 // {
 // 	std::vector<int>::const_iterator it = args.begin();
 // 	for (; it != args.end(); it++)
@@ -218,14 +229,14 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 // 		}
 // 	}
 // }
-// void	Pmerge::sort(int size, int args[])
+// void	PmergeMe::sort(int size, int args[])
 // {
 // 	std::vector<int> vec;
 // 	for (int i = 0; i < size; i++)
 // 		vec.push_back(args[i]);
 // }
 
-// void	Pmerge::sort(std::vector<int> args)
+// void	PmergeMe::sort(std::vector<int> args)
 // {
 // 	std::vector<int>::iterator	cur = args.begin();
 // 	for (++cur; cur != args.end(); cur++)
@@ -249,7 +260,7 @@ inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
 // 	std::cout << std::endl;
 // }
 
-// inline std::vector<int> Pmerge::merge(const std::vector<int> &arr)
+// inline std::vector<int> PmergeMe::merge(const std::vector<int> &arr)
 // {
 // 	size_t	arr_size = arr.size();
 // 	if (arr_size <= 1)

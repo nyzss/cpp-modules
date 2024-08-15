@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pmerge.hpp                                         :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okoca <okoca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,18 +11,18 @@
 /* ************************************************************************** */
 
 #pragma once
-#ifndef PMERGE_HPP
-# define PMERGE_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 #include <vector>
 #include <algorithm>
 
-class Pmerge
+class PmergeMe
 {
 private:
-	Pmerge () {};
-	Pmerge (const Pmerge &value) { (void)value; };
-	Pmerge & operator=(const Pmerge &value) { (void)value; return *this; };
+	PmergeMe () {};
+	PmergeMe (const PmergeMe &value) { (void)value; };
+	PmergeMe & operator=(const PmergeMe &value) { (void)value; return *this; };
 
 // INACCURATE ONE
 private:
@@ -38,8 +38,8 @@ private:
 	static std::vector<int>	generate_jacobsthal(size_t n);
 
 public:
-	~Pmerge () {};
+	~PmergeMe () {};
 	static std::vector<int>	sort(const std::vector<int> &vec);
 };
 
-#endif /* PMERGE_HPP */
+#endif /* PMERGEME_HPP */

@@ -16,11 +16,11 @@ CFLAGS = -O3 -Wall -Werror -Wextra -std=c++98
 
 DEP_FLAG = -MMD
 
-SRC_FILES = main.cpp Pmerge.cpp
+SRC_FILES = main.cpp PmergeMe.cpp
 
 INCLUDES = ./
 
-NAME = Pmerge
+NAME = PmergeMe
 
 OBJS = ${SRC_FILES:.cpp=.o}
 
