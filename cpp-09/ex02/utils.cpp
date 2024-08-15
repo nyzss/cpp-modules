@@ -34,6 +34,7 @@ int	*check_args(int ac, char **av)
 		if (args[i] < 0)
 		{
 			std::cerr << "only positive integers." << std::endl;
+			delete[] args;
 			std::exit(EXIT_FAILURE);
 		}
 	}
@@ -45,6 +46,7 @@ int	*check_args(int ac, char **av)
 	if (it != dup_check.end())
 	{
 		std::cerr << "no dup" << std::endl;
+		delete[] args;
 		std::exit(EXIT_FAILURE);
 	}
 	return args;
