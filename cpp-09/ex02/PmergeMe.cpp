@@ -13,86 +13,6 @@
 #include "PmergeMe.hpp"
 #include <iostream>
 
-
-
-// [7, 8, 5, 9, 11, 0, 2, 1, 10, 3, 4, 6]
-
-//  Apairrer: [(7, 8), (5, 9), (11, 0), (2, 1), (10, 3), (4, 6)]
-
-// . Comparer*: [8, 9, 11, 2, 10, 6] et... Récursion
-// (on va trier cette nouvelle liste de la même manière que la première,
-// donc une bullet en plus, mais la récursion, c'est la phase 2 de l'algo:
-// on reprendra pour la phase 3 quand l'appel récursif suivant me renverra cette liste triée):
-
-// .. Apairrer: [(8, 9), (11, 2), (10, 6)]
-
-// .. Comparer**: [9, 11, 10] et... Récursion:
-
-// ... Apairrer: [(9 , 11)] je peux pas faire de paire avec le 10, je le garde pour plus tard.
-
-// ... Comparer***: [11] et... Récursion:
-
-// .... Critère d'arrêt atteint (liste de taille 1): je retourne la liste [11]...
-// Et je commence à "remonter" ma chaîne d'appels (je repasse à 3 bullets).
-
-// ... Insérer: l'élément appairé à 11, le 9**, j'ai la liste [9, 11].
-// J'insère le 10 que je m'étais gardé pour plus tard et je retourne la liste [9, 10, 11]
-
-// .. Insérer: d'abord l'élément appairé au plus petit élément, 9,
-// ici c'est 8*, j'ai la liste [8, 9]. Ensuite, j'insère l'élément apairré à 11,
-// ici le 2 dans la liste [8, 9, 10] (en fait, dans la liste [8, 9, (10, 6)]...),
-// puis l'élément apairré à 10 (le 6) dans la liste [2, 8, 9].
-//Je retourne la liste [2, 6, 8, 9, 10, 11]
-
-// . Insérer: d'abord l'élément appairé à 2, puis celui appairé à  8,
-// suivi de celui appairé à 6, ensuite celui appairé à  10,
-// suivi de celui à 9, puis à 11 (suivant Jacobsthal...)
-// et j'ai la liste [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] à renvoyer.
-
-// inline std::vector<int> PmergeMe::merge(const std::vector<int> &arr)
-// {
-// }
-
-// class ComparisonCounter {
-// private:
-//     int count;
-
-// public:
-//     ComparisonCounter() : count(0) {}
-
-//     template<typename T>
-//     bool operator()(const T& a, const T& b) {
-//         ++count;
-//         return a < b;
-//     }
-// 	void	inc() { count++; }
-
-//     int getCount() const { return count; }
-//     void reset() { count = 0; }
-// };
-
-// template<typename Iterator, typename T, typename Compare>
-// Iterator my_upper_bound(Iterator first, Iterator last, const T& value, Compare comp) {
-//     Iterator it;
-//     typename std::iterator_traits<Iterator>::difference_type count, step;
-//     count = std::distance(first, last);
-
-//     while (count > 0) {
-//         it = first;
-//         step = count / 2;
-//         std::advance(it, step);
-//         if (!comp(value, *it)) {
-//             first = ++it;
-//             count -= step + 1;
-//         } else {
-//             count = step;
-//         }
-//     }
-//     return first;
-// }
-
-// ComparisonCounter	total_cmp;
-
 std::vector<int>	PmergeMe::sort(const std::vector<int> &vec)
 {
 	// paired up numbers, if odd then the last pair is first_num == second_num
@@ -325,3 +245,83 @@ inline const std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
 // 	std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), std::back_inserter(res));
 // 	return res;
 // }
+
+
+
+// [7, 8, 5, 9, 11, 0, 2, 1, 10, 3, 4, 6]
+
+//  Apairrer: [(7, 8), (5, 9), (11, 0), (2, 1), (10, 3), (4, 6)]
+
+// . Comparer*: [8, 9, 11, 2, 10, 6] et... Récursion
+// (on va trier cette nouvelle liste de la même manière que la première,
+// donc une bullet en plus, mais la récursion, c'est la phase 2 de l'algo:
+// on reprendra pour la phase 3 quand l'appel récursif suivant me renverra cette liste triée):
+
+// .. Apairrer: [(8, 9), (11, 2), (10, 6)]
+
+// .. Comparer**: [9, 11, 10] et... Récursion:
+
+// ... Apairrer: [(9 , 11)] je peux pas faire de paire avec le 10, je le garde pour plus tard.
+
+// ... Comparer***: [11] et... Récursion:
+
+// .... Critère d'arrêt atteint (liste de taille 1): je retourne la liste [11]...
+// Et je commence à "remonter" ma chaîne d'appels (je repasse à 3 bullets).
+
+// ... Insérer: l'élément appairé à 11, le 9**, j'ai la liste [9, 11].
+// J'insère le 10 que je m'étais gardé pour plus tard et je retourne la liste [9, 10, 11]
+
+// .. Insérer: d'abord l'élément appairé au plus petit élément, 9,
+// ici c'est 8*, j'ai la liste [8, 9]. Ensuite, j'insère l'élément apairré à 11,
+// ici le 2 dans la liste [8, 9, 10] (en fait, dans la liste [8, 9, (10, 6)]...),
+// puis l'élément apairré à 10 (le 6) dans la liste [2, 8, 9].
+//Je retourne la liste [2, 6, 8, 9, 10, 11]
+
+// . Insérer: d'abord l'élément appairé à 2, puis celui appairé à  8,
+// suivi de celui appairé à 6, ensuite celui appairé à  10,
+// suivi de celui à 9, puis à 11 (suivant Jacobsthal...)
+// et j'ai la liste [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] à renvoyer.
+
+// inline std::vector<int> PmergeMe::merge(const std::vector<int> &arr)
+// {
+// }
+
+// class ComparisonCounter {
+// private:
+//     int count;
+
+// public:
+//     ComparisonCounter() : count(0) {}
+
+//     template<typename T>
+//     bool operator()(const T& a, const T& b) {
+//         ++count;
+//         return a < b;
+//     }
+// 	void	inc() { count++; }
+
+//     int getCount() const { return count; }
+//     void reset() { count = 0; }
+// };
+
+// template<typename Iterator, typename T, typename Compare>
+// Iterator my_upper_bound(Iterator first, Iterator last, const T& value, Compare comp) {
+//     Iterator it;
+//     typename std::iterator_traits<Iterator>::difference_type count, step;
+//     count = std::distance(first, last);
+
+//     while (count > 0) {
+//         it = first;
+//         step = count / 2;
+//         std::advance(it, step);
+//         if (!comp(value, *it)) {
+//             first = ++it;
+//             count -= step + 1;
+//         } else {
+//             count = step;
+//         }
+//     }
+//     return first;
+// }
+
+// ComparisonCounter	total_cmp;
