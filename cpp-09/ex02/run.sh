@@ -4,7 +4,7 @@ N_ARGS=3000
 
 NUMBER="${1:-1}"
 
-PROGRAM=./Pmerge
+PROGRAM=./PmergeMe
 
 make
 
