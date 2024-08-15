@@ -27,7 +27,24 @@ int main(int ac, char **av)
 	}
 	int	*args = new int[ac - 1]();
 	for (int i = 0; i < ac - 1; i++)
+	{
 		args[i] = std::atoi(av[i + 1]);
+		if (args[i] < 0)
+		{
+			std::cerr << "only positive integers." << std::endl;
+			return (1);
+		}
+	}
+	std::vector<int> dup_check;
+	for (int i = 0; i < ac - 1; i++)
+		dup_check.push_back(args[i]);
+	std::sort(dup_check.begin(), dup_check.end());
+	std::vector<int>::iterator it = std::adjacent_find(dup_check.begin(), dup_check.end());
+	if (it != dup_check.end())
+	{
+		std::cerr << "no dup" << std::endl;
+		return (1);
+	}
 
 	try
 	{
