@@ -15,7 +15,6 @@
 #include <string>
 #include <vector>
 #include <deque>
-#include <cstdlib>
 #include <sys/time.h>
 
 #include "PmergeMe.hpp"
@@ -23,19 +22,15 @@
 int	*check_args(int ac, char **av)
 {
 	if (ac < 2)
-	{
-		std::cerr << "please provide more than 1 number aguments" << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
+		throw std::invalid_argument("please provide more than 1 number aguments");
 	int	*args = new int[ac - 1]();
 	for (int i = 0; i < ac - 1; i++)
 	{
 		args[i] = std::atoi(av[i + 1]);
 		if (args[i] < 0)
 		{
-			std::cerr << "only positive integers." << std::endl;
 			delete[] args;
-			std::exit(EXIT_FAILURE);
+			throw std::invalid_argument("only positive integers");
 		}
 	}
 	std::vector<int> dup_check;
@@ -45,9 +40,8 @@ int	*check_args(int ac, char **av)
 	std::vector<int>::iterator it = std::adjacent_find(dup_check.begin(), dup_check.end());
 	if (it != dup_check.end())
 	{
-		std::cerr << "no dup" << std::endl;
 		delete[] args;
-		std::exit(EXIT_FAILURE);
+		throw std::invalid_argument("no dup");
 	}
 	return args;
 }

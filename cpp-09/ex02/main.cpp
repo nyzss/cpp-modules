@@ -20,30 +20,39 @@
 
 int main(int ac, char **av)
 {
-	int	*args = check_args(ac, av);
 
-	std::cout << "-------VEC-------" << std::endl;
 	try
 	{
-		do_vec(args, ac - 1);
+		int	*args = check_args(ac, av);
+
+		std::cout << "-------VEC-------" << std::endl;
+		try
+		{
+			do_vec(args, ac - 1);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+		std::cout << "-------DEQ-------" << std::endl;
+
+		try
+		{
+			do_deq(args, ac - 1);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+		delete[] args;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
-	}
-
-	std::cout << "-------DEQ-------" << std::endl;
-
-	try
-	{
-		do_deq(args, ac - 1);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
+		return (1);
 	}
 
 	std::cout << "   --------" << std::endl;
-
-	delete[] args;
 }
