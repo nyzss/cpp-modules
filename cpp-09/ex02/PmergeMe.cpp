@@ -13,7 +13,7 @@
 #include "PmergeMe.hpp"
 #include <iostream>
 
-std::vector<int>	PmergeMe::sort(const std::vector<int> &vec)
+std::vector<int>	PmergeMe::sort_vec(const std::vector<int> &vec)
 {
 	// paired up numbers, if odd then the last pair is first_num == second_num
 	if (vec.size() == 1)
@@ -28,7 +28,7 @@ std::vector<int>	PmergeMe::sort(const std::vector<int> &vec)
 			continue;
 		big.push_back((*it).second);
 	}
-	big = sort(big);
+	big = sort_vec(big);
 
 	const std::vector<int> jacobsthal = generate_jacobsthal(pairs.size());
 	for (size_t i = 0; i < jacobsthal.size(); i++)
@@ -93,7 +93,7 @@ inline const std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
 	return jacobsthal;
 }
 
-// std::vector<int>	PmergeMe::sort(std::vector<int> v)
+// std::vector<int>	PmergeMe::sort_vec(std::vector<int> v)
 // {
 // 	std::vector<int> a;
 // 	a.reserve(v.size());
@@ -189,14 +189,14 @@ inline const std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
 // 		}
 // 	}
 // }
-// void	PmergeMe::sort(int size, int args[])
+// void	PmergeMe::sort_vec(int size, int args[])
 // {
 // 	std::vector<int> vec;
 // 	for (int i = 0; i < size; i++)
 // 		vec.push_back(args[i]);
 // }
 
-// void	PmergeMe::sort(std::vector<int> args)
+// void	PmergeMe::sort_vec(std::vector<int> args)
 // {
 // 	std::vector<int>::iterator	cur = args.begin();
 // 	for (++cur; cur != args.end(); cur++)

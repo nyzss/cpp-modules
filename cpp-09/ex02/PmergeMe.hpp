@@ -39,7 +39,7 @@ private:
 
 public:
 	~PmergeMe () {};
-	static std::vector<int>	sort(const std::vector<int> &vec);
+	static std::vector<int>	sort_vec(const std::vector<int> &vec);
 };
 
 #endif /* PMERGEME_HPP */

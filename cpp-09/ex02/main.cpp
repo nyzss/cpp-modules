@@ -54,7 +54,7 @@ int main(int ac, char **av)
 
 		struct timeval tm1, tm2;
 		gettimeofday(&tm1, NULL);
-		std::vector<int> v = PmergeMe::sort(vec);
+		std::vector<int> v = PmergeMe::sort_vec(vec);
 		gettimeofday(&tm2, NULL);
 
 		std::sort(vec.begin(), vec.end());
@@ -63,7 +63,7 @@ int main(int ac, char **av)
 			std::cout << "sorted succesfully!" << std::endl;
 
 		float time = float(tm2.tv_usec - tm1.tv_usec) / 1000;
-		std::cout << "PmergeMe::sort exec: " << time << " ms" << std::endl;
+		std::cout << "PmergeMe::sort_vec exec: " << time << " ms" << std::endl;
 
 		std::cout << "Result: ";
 		std::vector<int>::const_iterator it = v.begin();
