@@ -15,7 +15,13 @@
 # define PMERGEME_HPP
 
 #include <vector>
+#include <deque>
 #include <algorithm>
+
+int		*check_args(int ac, char **av);
+
+void	do_vec(int args[], int n);
+void	do_deq(int args[], int n);
 
 class PmergeMe
 {
@@ -40,6 +46,13 @@ private:
 public:
 	~PmergeMe () {};
 	static std::vector<int>	sort_vec(const std::vector<int> &vec);
+
+private:
+	static std::deque<std::pair<int, int> > pair_up_deq(const std::deque<int> &d) __attribute__((hot));
+	static const std::deque<int>	generate_jacobsthal_deq(size_t n);
+
+public:
+	static std::deque<int>	sort_deq(const std::deque<int> deq);
 };
 
 #endif /* PMERGEME_HPP */

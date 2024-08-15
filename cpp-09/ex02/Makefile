@@ -16,7 +16,7 @@ CFLAGS = -O3 -Wall -Werror -Wextra -std=c++98
 
 DEP_FLAG = -MMD
 
-SRC_FILES = main.cpp PmergeMe.cpp
+SRC_FILES = main.cpp PmergeMe.cpp utils.cpp
 
 INCLUDES = ./
 

@@ -93,6 +93,85 @@ inline const std::vector<int>	PmergeMe::generate_jacobsthal(size_t n)
 	return jacobsthal;
 }
 
+
+std::deque<int>	PmergeMe::sort_deq(const std::deque<int> deq)
+{
+	if (deq.size() == 1)
+		return deq;
+	std::deque<int> big;
+	std::deque<std::pair<int, int> > pairs = pair_up_deq(deq);
+	std::deque<std::pair<int, int> >::const_iterator it;
+	for (it = pairs.begin(); it != pairs.end(); it++)
+	{
+		if ((*it).first == (*it).second)
+			continue;
+		big.push_back((*it).second);
+	}
+	big = sort_deq(big);
+
+	const std::deque<int> jacobsthal = generate_jacobsthal_deq(pairs.size());
+	for (size_t i = 0; i < jacobsthal.size(); i++)
+	{
+		if ((size_t)jacobsthal[i] >= pairs.size())
+			break;
+		if (pairs[jacobsthal[i]].first != -1)
+		{
+			std::deque<int>::iterator pos = std::upper_bound(big.begin(), big.end(), pairs[jacobsthal[i]].first);
+			big.insert(pos, pairs[jacobsthal[i]].first);
+			pairs[jacobsthal[i]].first = -1;
+		}
+	}
+
+	for (it = pairs.begin(); it != pairs.end(); it++)
+	{
+		if ((*it).first != -1)
+		{
+			std::deque<int>::iterator pos = std::upper_bound(big.begin(), big.end(), (*it).first);
+			big.insert(pos, (*it).first);
+		}
+	}
+	return big;
+}
+
+inline const std::deque<int>	PmergeMe::generate_jacobsthal_deq(size_t n)
+{
+	std::deque<int>	jacobsthal;
+	jacobsthal.push_back(0);
+	if (n > 1)
+		jacobsthal.push_back(1);
+
+	for (size_t i = 2; i < n; i++)
+	{
+		size_t	next = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
+		if (next >= n)
+			break ;
+		jacobsthal.push_back(next);
+	}
+	return jacobsthal;
+}
+
+
+inline std::deque<std::pair<int, int> > PmergeMe::pair_up_deq(const std::deque<int> &d)
+{
+	std::deque<std::pair<int, int> > pairs;
+	std::deque<int>::const_iterator c_it = d.begin();
+	for (; c_it < d.end(); c_it += 2)
+	{
+		std::deque<int>::const_iterator next = c_it + 1;
+		if (next != d.end())
+		{
+			pairs.push_back(std::make_pair(*c_it, *next));
+			std::pair<int, int> &p = pairs.back();
+			if (p.first > p.second)
+				std::swap(p.first, p.second);
+		}
+	}
+	if (d.size() % 2 != 0)
+		pairs.push_back(std::make_pair(d.back(), d.back()));
+	return pairs;
+}
+
+
 // std::vector<int>	PmergeMe::sort_vec(std::vector<int> v)
 // {
 // 	std::vector<int> a;
