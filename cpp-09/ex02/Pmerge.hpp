@@ -35,6 +35,7 @@ private:
 	// typedef std::vector<int> t;
 	// static std::vector<int> merge(const std::vector<int> &arr) __attribute__((hot));
 	static std::vector<std::pair<int, int> > pair_up(const std::vector<int> &v) __attribute__((hot));
+	static std::vector<int>	generate_jacobsthal(size_t n);
 
 public:
 	~Pmerge () {};

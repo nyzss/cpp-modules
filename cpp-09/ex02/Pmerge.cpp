@@ -56,6 +56,12 @@
 std::vector<int>	Pmerge::sort(const std::vector<int> &vec)
 {
 	// paired up numbers, if odd then the last pair is first_num == second_num
+	std::vector<int> jacobsthal = generate_jacobsthal(vec.size());
+	for (size_t i = 0; i < jacobsthal.size(); i++)
+	{
+		std::cout << jacobsthal[i] << ", ";
+	}
+	std::cout << std::endl;
 	if (vec.size() == 1)
 		return vec;
 	std::vector<int> big;
@@ -96,6 +102,24 @@ inline std::vector<std::pair<int, int> > Pmerge::pair_up(const std::vector<int> 
 	if (v.size() % 2 != 0)
 		pairs.push_back(std::make_pair(v.back(), v.back()));
 	return pairs;
+}
+
+inline std::vector<int>	Pmerge::generate_jacobsthal(size_t n)
+{
+	std::vector<int>	jacobsthal;
+	jacobsthal.reserve(n);
+	jacobsthal.push_back(0);
+	if (n > 1)
+		jacobsthal.push_back(1);
+
+	for (size_t i = 2; i < n; i++)
+	{
+		size_t	next = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
+		if (next >= n)
+			break ;
+		jacobsthal.push_back(next);
+	}
+	return jacobsthal;
 }
 
 // std::vector<int>	Pmerge::sort(std::vector<int> v)
